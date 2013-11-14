@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dbPurplepen" Class="dcPurplepenDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\dbPurplepen.mdf;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="dbPurplepenConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.comments" Member="comments">
+    <Type Name="comment">
+      <Column Name="comment_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="upload_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="score" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="datum" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="category" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dot_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="comment_dot" Member="dots" ThisKey="dot_id" OtherKey="dot_id" Type="dot" />
+      <Association Name="comment_uploadversion" Member="uploadversions" ThisKey="upload_id" OtherKey="version_id" Type="uploadversion" />
+    </Type>
+  </Table>
+  <Table Name="dbo.version" Member="uploadversions">
+    <Type Name="uploadversion">
+      <Column Name="version_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="version" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="path" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="datum" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="project_id" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Association Name="uploadversion_upload" Member="uploads" ThisKey="project_id" OtherKey="upload_id" Type="upload" />
+      <Association Name="comment_uploadversion" Member="comment" ThisKey="version_id" OtherKey="upload_id" Type="comment" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.dots" Member="dots">
+    <Type Name="dot">
+      <Column Name="dot_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="dot_x" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dot_y" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="comment_dot" Member="comment" ThisKey="dot_id" OtherKey="dot_id" Type="comment" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ranking" Member="rankings">
+    <Type Name="ranking">
+      <Column Name="rank_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="user_ranking" Member="user" ThisKey="rank_id" OtherKey="rank_id" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.uploads" Member="uploads">
+    <Type Name="upload">
+      <Column Name="upload_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="upload_user" Member="users" ThisKey="user_id" OtherKey="user_id" Type="user" />
+      <Association Name="uploadversion_upload" Member="uploadversion" ThisKey="upload_id" OtherKey="project_id" Type="uploadversion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.users" Member="users">
+    <Type Name="user">
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="fb_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="familyname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="permission" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="comments_plus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="comments_min" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="report" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="rank_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="user_ranking" Member="rankings" ThisKey="rank_id" OtherKey="rank_id" Type="ranking" />
+      <Association Name="upload_user" Member="upload" ThisKey="user_id" OtherKey="user_id" Type="upload" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

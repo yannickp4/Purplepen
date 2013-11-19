@@ -11,7 +11,7 @@ namespace Purplepen.Controllers
         //
         // GET: /Ranking/
 
-        public ActionResult Index()
+        public ActionResult Ranking()
         {
             return View();
         }

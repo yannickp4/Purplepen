@@ -3,6 +3,11 @@
     font-family:Arial, helvetica;
 }
 
+nav {
+    display:block;
+    width:100%;
+}
+
 /*----------------------INDEX-------------------------------*/
 
 #uploadedDesign {

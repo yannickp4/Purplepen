@@ -11,7 +11,7 @@ namespace Purplepen.Controllers
         //
         // GET: /Admin/
 
-        public ActionResult Index()
+        public ActionResult Admin()
         {
             return View();
         }

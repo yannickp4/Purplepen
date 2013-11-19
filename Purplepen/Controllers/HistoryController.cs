@@ -11,7 +11,7 @@ namespace Purplepen.Controllers
         //
         // GET: /History/
 
-        public ActionResult Index()
+        public ActionResult History()
         {
             return View();
         }

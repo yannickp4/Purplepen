@@ -109,13 +109,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\screen.css" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BeamerController.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InspirationController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PortfolioController.cs" />
     <Compile Include="Controllers\RankingController.cs" />
+    <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="dcPurplepen.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -137,12 +140,13 @@
     <Content Include="App_Data\dbPurplepen_log.ldf">
       <DependentUpon>dbPurplepen.mdf</DependentUpon>
     </Content>
-    <Content Include="Content\bootstrap\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap\bootstrap.css" />
-    <Content Include="Content\bootstrap\bootstrap.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -151,6 +155,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -179,6 +184,8 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Portfolio\Portfolio.cshtml" />
     <Content Include="Views\Ranking\Ranking.cshtml" />
+    <Content Include="Views\Beamer\Beamer.cshtml" />
+    <Content Include="Views\Upload\Upload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

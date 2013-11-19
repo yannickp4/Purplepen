@@ -11,7 +11,7 @@ namespace Purplepen.Controllers
         //
         // GET: /Portfolio/
 
-        public ActionResult Index()
+        public ActionResult Portfolio()
         {
             return View();
         }

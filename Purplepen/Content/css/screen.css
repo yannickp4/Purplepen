@@ -1,0 +1,160 @@
+﻿body {
+    background-color: #dfdfdf;
+    font-family:Arial, helvetica;
+}
+
+/*----------------------INDEX-------------------------------*/
+
+#uploadedDesign {
+    background-color: green;
+    display: block;
+    float:left;
+}
+
+#uploadTabs {
+    background-color: red;
+    display:block;
+    float:left;
+}
+
+.uTab {
+    width:70px;
+    height:25px;
+    display:block;
+    float:left;
+}
+
+.showhidedots {
+    border-radius:6px;
+    background-color: #18c862;
+    display: block;
+}
+
+#comments {
+    float:right;
+    display:block;
+    background-color:blue;
+}
+
+#commentTabs {
+    display:block;
+    background-color:white;
+}
+
+.cTab {
+     width:70px;
+    height:25px;
+    display:block;
+    float:left;
+    background-color: pink;
+}
+
+#commentList {
+        display:block;
+        float:left;
+}
+
+.commentItem {
+    width:100%;
+    display:block;
+    float:left;
+    color:white;
+}
+
+form {
+}
+
+intput[type="submit"] {
+}
+
+intput[type="text"] {
+}
+
+/*----------------------HISTORY----------------------------*/
+
+#listDesigns {
+    display:block;
+    border-color: red;
+    width: 80%;
+    margin:0 auto;
+}
+
+.listItem {
+    display:block;
+    width:100%;
+    height:50px;
+    background-color: green;
+    padding-bottom:5px;
+    padding-top: 5px;
+}
+
+.itemTitle {
+    display: inline-block;
+    float:left;
+    font-size:large;
+    width:70%;
+}
+
+.listItem img {
+   display: inline-block;
+    float:right;
+}
+
+/*-----------------------ADMIN-----------------------------*/
+
+#usersList {
+    display:block;
+    float:left;
+}
+
+#kick {
+    display:block;
+    float: left;
+}
+
+/*------------------------INSPIRATION------------------------*/
+
+.tile {
+    background-color: black;
+    width:125px;
+    height:125px;
+    margin:5px;
+    float: left;
+    display: block;
+}
+
+/*--------------------BEAMER----------------------------*/
+
+/*zie index*/
+
+/*---------------------PORTFOLIO------------------------*/
+
+#listDesigns {
+    display:block;
+    width:80%;
+    margin:0 auto;
+}
+/*
+.listItem {
+    display:block;
+    width:100%;
+    height:50px;
+    background-color: yellow;
+}
+
+.listItem img {
+    display:inline;
+    float:right;
+    
+    }
+
+.itemTitle {
+    display:inline;
+    font-size:large;
+    float: left;
+}*/
+
+/*----------------------UPLOAD----------------------------------*/
+fieldset {
+    border-color: black;
+}

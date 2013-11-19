@@ -1,5 +1,23 @@
 ﻿@{
     ViewBag.Title = "Admin";
 }
-
-<h2>Admin</h2>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>Admin</title>
+    <link href="~/Content/css/screen.css" rel="stylesheet" />
+</head>
+<body> 
+    <uc1:navigation runat="server" id="Navigation" />
+    <div id="usersList">
+        <select name="FavWebSite" size="5">
+            <option value="user">Jean</option>
+            <option value="user">Jan</option>
+            <option value="user">John</option>
+            <option value="user">Han</option>
+            <option value="user">Bruce Lee</option>
+</select>
+    </div>
+    <form>
+        <input type="button" value="kick" name="kick" id="kick" />
+    </form>
+</body>
+</html>

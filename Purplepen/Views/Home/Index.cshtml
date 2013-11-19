@@ -1,43 +1,44 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
+<!DOCTYPE html>
 <html>
-    <head>
-        <link href="~/Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    </head>
-
-</html>
+<head>
+    <title></title>
+    <link href="~/Content/bootstrap/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/screen.css" rel="stylesheet" />
+</head>
 <body>
-    <div id="upoloadedDesign">
-    <div id="uploadTabs">
-        <div class="uTab" id="tab1">1</div>
-        <div class="uTab" id="tab2">2</div>
-        <div class="uTab" id="tab3">3</div>
-    </div>
-    <form>
-        <input type="submit" value="Show dots" />
-    </form>
-    <div id="design">
-        <canvas>image here</canvas>
-        <p id="designDescription"></p>
-    </div>
-</div>
-<div id="comments">
-    <div id="commentTabs">
-        <div class="cTab" id="generalTab"></div>
-        <div class="cTab" id="specificTabs"></div>
-    </div>
-    <div id="commentList">
-        <div id="commentItem">
-            <img src="#" alt="userImg" />
-            <h4>Username</h4>
-            <p>Comment</p>
+    <div id="uploadedDesign">
+        <div id="uploadTabs">
+            <div class="uTab" id="tab1">1</div>
+            <div class="uTab" id="tab2">2</div>
+            <div class="uTab" id="tab3">3</div>
+        </div>
+        <form>
+            <input type="submit" class="showhidedots" value="Show dots" />
+        </form>
+        <div id="design">
+            <canvas>image here</canvas>
+            <p id="designDescription"></p>
         </div>
     </div>
-    <form>
-        <input type="text" required />
-        <input type="submit" value="Send" />
-    </form>
-</div>
+    <div id="comments">
+        <div id="commentTabs">
+            <div class="cTab" id="generalTab"><a>General</a></div>
+            <div class="cTab" id="specificTabs"><a>Specific</a></div>
+        </div>
+        <div id="commentList">
+            <div class="commentItem">
+                <img src="#" alt="userImg" />
+                <h4>Username</h4>
+                <p>Comment</p>
+            </div>
+        </div>
+        <form>
+            <input type="text" required />
+            <input type="submit" value="Send" />
+        </form>
+    </div>
 </body>
-
+</html>

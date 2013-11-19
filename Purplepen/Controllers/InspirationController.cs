@@ -11,7 +11,7 @@ namespace Purplepen.Controllers
         //
         // GET: /Inspiration/
 
-        public ActionResult Index()
+        public ActionResult Inspiration()
         {
             return View();
         }

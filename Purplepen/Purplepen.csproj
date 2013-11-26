@@ -157,7 +157,9 @@
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\uploads\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -187,6 +189,7 @@
     <Content Include="Views\Beamer\Beamer.cshtml" />
     <Content Include="Views\Upload\Upload.cshtml" />
     <Content Include="Views\Navigation\Navigation.cshtml" />
+    <Content Include="Views\Upload\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

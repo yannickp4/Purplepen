@@ -9,10 +9,11 @@
 </head>
 
 <body>
-     @RenderPage("~/Views/Navigation/Navigation.cshtml");
+     @RenderPage("~/Views/Navigation/Navigation.cshtml")
     <h1>Upload your design</h1>
+      @using (Html.BeginForm("Upload", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" })){
     <form>
-        <input type="radio" name="choice" value="NewDesign" >New Design<br>
+       <input type="radio" name="choice" value="NewDesign" >New Design<br>
         <fieldset name="new">
             <legend>New Design</legend>
             <label>Title</label><input type="text" name="titleNew" required /><br />
@@ -28,9 +29,10 @@
             </select><br />
             <label>Description</label><textarea name="descriptionUpdate" required></textarea>
         </fieldset>
-        <input type="file" />
+        <input type="file" name="file" />
         <input type="submit" />
     </form>
+      }
 </body>
 
 </html>

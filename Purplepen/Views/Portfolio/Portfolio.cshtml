@@ -7,25 +7,18 @@
     <link href="~/Content/css/screen.css" rel="stylesheet" />
 </head>
 <body> 
-     @RenderPage("~/Views/Navigation/Navigation.cshtml");
+     @RenderPage("~/Views/Navigation/Navigation.cshtml")
      <h2>Portfolio</h2>
     <div id="listDesigns">
-        <div class="listItem">
-            <h3 class="itemTitle">DesignTitle</h3>
-            <img src="toinfintyandbeyond" alt="listItemThumb" />
-        </div>
-        <div class="listItem">
-            <h3 class="itemTitle">DesignTitle</h3>
-            <img src="toinfintyandbeyond" alt="listItemThumb" />
-            <div id="listItem">
-            <h3 class="itemTitle">DesignTitle</h3>
-            <img src="toinfintyandbeyond" alt="listItemThumb" />
-        </div>
+                        @ViewBag.projects
+@foreach (var item in ViewBag.projects) { 
             <div class="listItem">
-            <h3 class="itemTitle">DesignTitle</h3>
+            <h3 class="itemTitle">@item.name</h3>
             <img src="toinfintyandbeyond" alt="listItemThumb" />
         </div>
-        </div>
+}
+
+
     </div>
 </body>
 </html>

@@ -26,51 +26,51 @@
         <elementListCompartment Id="180f7f3b-9883-465b-ba5e-f5f391c19853" absoluteBounds="3.3900000000000006, 4.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="a7d4afe0-3fef-4ea9-b74e-a27e3fb199a5" absoluteBounds="0.875, 0.5, 2, 1.3862939453125005">
-      <DataClassMoniker Name="/dcPurplepenDataContext/upload" />
+    <classShape Id="a7d4afe0-3fef-4ea9-b74e-a27e3fb199a5" absoluteBounds="0.875, 0.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/dcPurplepenDataContext/project" />
       <nestedChildShapes>
         <elementListCompartment Id="c6f8b454-da13-4d7e-9aeb-095ab61b8d32" absoluteBounds="0.88999999999999968, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="1f8034f6-5202-4857-adaf-9ae9301645ca" absoluteBounds="3.375, 0.5, 2, 2.7324039713541666">
+    <classShape Id="1f8034f6-5202-4857-adaf-9ae9301645ca" absoluteBounds="3.375, 0.5, 2, 2.3478011067708335">
       <DataClassMoniker Name="/dcPurplepenDataContext/user" />
       <nestedChildShapes>
-        <elementListCompartment Id="f42a7bd4-0874-4cd2-a995-181fb56b61c4" absoluteBounds="3.3899999999999997, 0.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f42a7bd4-0874-4cd2-a995-181fb56b61c4" absoluteBounds="3.3899999999999997, 0.96, 1.9700000000000002, 1.7878011067708333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(1.875 : 7.2901025390625); (1.875 : 7.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.875 : 7.2901025390625); (1.875 : 7.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dcPurplepenDataContext/comment/comment_dot" />
       <nodes>
         <classShapeMoniker Id="d9ac03eb-eec2-45dd-987d-bef5ba5684d5" />
         <classShapeMoniker Id="c4bfd1b4-1beb-4909-8417-c355fdf5e99a" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.375 : 3.23240397135417); (4.375 : 3.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.375 : 2.84780110677083); (4.375 : 3.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/dcPurplepenDataContext/user/user_ranking" />
       <nodes>
         <classShapeMoniker Id="1f8034f6-5202-4857-adaf-9ae9301645ca" />
         <classShapeMoniker Id="b8aa1f0b-a46f-48a9-b4f0-dae39e373900" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.875 : 2.375); (1.875 : 1.8862939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/dcPurplepenDataContext/uploadversion/uploadversion_upload" />
+    <associationConnector edgePoints="[(1.875 : 4.75); (1.875 : 4.3381982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/dcPurplepenDataContext/comment/comment_uploadversion" />
+      <nodes>
+        <classShapeMoniker Id="d9ac03eb-eec2-45dd-987d-bef5ba5684d5" />
+        <classShapeMoniker Id="f9d49c10-f6f1-4e1c-9fa3-750480ccf8a5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.875 : 2.375); (1.875 : 1.8862939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/dcPurplepenDataContext/uploadversion/uploadversion_project" />
       <nodes>
         <classShapeMoniker Id="f9d49c10-f6f1-4e1c-9fa3-750480ccf8a5" />
         <classShapeMoniker Id="a7d4afe0-3fef-4ea9-b74e-a27e3fb199a5" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(2.875 : 1.19314697265625); (3.375 : 1.19314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/dcPurplepenDataContext/upload/upload_user" />
+      <AssociationMoniker Name="/dcPurplepenDataContext/project/project_user" />
       <nodes>
         <classShapeMoniker Id="a7d4afe0-3fef-4ea9-b74e-a27e3fb199a5" />
         <classShapeMoniker Id="1f8034f6-5202-4857-adaf-9ae9301645ca" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(1.875 : 4.75); (1.875 : 4.3381982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/dcPurplepenDataContext/comment/comment_uploadversion" />
-      <nodes>
-        <classShapeMoniker Id="d9ac03eb-eec2-45dd-987d-bef5ba5684d5" />
-        <classShapeMoniker Id="f9d49c10-f6f1-4e1c-9fa3-750480ccf8a5" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

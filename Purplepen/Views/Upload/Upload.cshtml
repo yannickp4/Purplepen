@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Upload";
+    ViewBag.Title = "UploadView";
 }
 <!DOCTYPE html>
 <html>
@@ -11,28 +11,36 @@
 <body>
      @RenderPage("~/Views/Navigation/Navigation.cshtml")
     <h1>Upload your design</h1>
-      @using (Html.BeginForm("Upload", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" })){
-    <form>
-       <input type="radio" name="choice" value="NewDesign" >New Design<br>
+      @using (Html.BeginForm("ImageUpload", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" })){
+    <form method="post">
         <fieldset name="new">
             <legend>New Design</legend>
-            <label>Title</label><input type="text" name="titleNew" required /><br />
-            <label>Description</label><textarea name="descriptionNew" required></textarea><br />
+            <label>Title</label><input type="text" name="txtTitle" id="txtTitle" required /><br />
+            <label>Description</label><textarea name="txtDescription" id="txtDescription" required></textarea><br />
         </fieldset>
-        <input type="radio" name="choice" value="">Update my design:<br>
+        <input type="file" name="file" />
+        <input type="submit" />
+    </form><br /><br /><br />
+      }
+
+          @using (Html.BeginForm("ImageUpload", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" })){
+    <form method="post">
         <fieldset name="update">
             <legend>Update Design</legend>
-            <select id="selectDesign" required>
-                <option>First Design</option>
-                <option>Second Design</option>
-                <option>Third Design</option>
+            Which design are you updating?
+            <select required name="project_id">
+                @ViewBag.allProjects
+@foreach (var item in ViewBag.allProjects) { 
+    <option value=@item.project_id>@item.name</option>
+}
             </select><br />
-            <label>Description</label><textarea name="descriptionUpdate" required></textarea>
+            <label>Description</label><textarea name="txtDescription" required></textarea>
         </fieldset>
         <input type="file" name="file" />
         <input type="submit" />
     </form>
       }
+
 </body>
 
 </html>

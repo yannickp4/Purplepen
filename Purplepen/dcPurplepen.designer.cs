@@ -42,9 +42,9 @@ namespace Purplepen
     partial void Insertranking(ranking instance);
     partial void Updateranking(ranking instance);
     partial void Deleteranking(ranking instance);
-    partial void Insertupload(upload instance);
-    partial void Updateupload(upload instance);
-    partial void Deleteupload(upload instance);
+    partial void Insertproject(project instance);
+    partial void Updateproject(project instance);
+    partial void Deleteproject(project instance);
     partial void Insertuser(user instance);
     partial void Updateuser(user instance);
     partial void Deleteuser(user instance);
@@ -112,11 +112,11 @@ namespace Purplepen
 			}
 		}
 		
-		public System.Data.Linq.Table<upload> uploads
+		public System.Data.Linq.Table<project> projects
 		{
 			get
 			{
-				return this.GetTable<upload>();
+				return this.GetTable<project>();
 			}
 		}
 		
@@ -153,9 +153,9 @@ namespace Purplepen
 		
 		private int _dot_id;
 		
-		private EntitySet<dot> _dots;
-		
 		private EntitySet<uploadversion> _uploadversions;
+		
+		private EntitySet<dot> _dots;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -183,8 +183,8 @@ namespace Purplepen
 		
 		public comment()
 		{
-			this._dots = new EntitySet<dot>(new Action<dot>(this.attach_dots), new Action<dot>(this.detach_dots));
 			this._uploadversions = new EntitySet<uploadversion>(new Action<uploadversion>(this.attach_uploadversions), new Action<uploadversion>(this.detach_uploadversions));
+			this._dots = new EntitySet<dot>(new Action<dot>(this.attach_dots), new Action<dot>(this.detach_dots));
 			OnCreated();
 		}
 		
@@ -368,19 +368,6 @@ namespace Purplepen
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="comment_dot", Storage="_dots", ThisKey="dot_id", OtherKey="dot_id")]
-		public EntitySet<dot> dots
-		{
-			get
-			{
-				return this._dots;
-			}
-			set
-			{
-				this._dots.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="comment_uploadversion", Storage="_uploadversions", ThisKey="upload_id", OtherKey="version_id")]
 		public EntitySet<uploadversion> uploadversions
 		{
@@ -391,6 +378,19 @@ namespace Purplepen
 			set
 			{
 				this._uploadversions.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="comment_dot", Storage="_dots", ThisKey="dot_id", OtherKey="dot_id")]
+		public EntitySet<dot> dots
+		{
+			get
+			{
+				return this._dots;
+			}
+			set
+			{
+				this._dots.Assign(value);
 			}
 		}
 		
@@ -414,18 +414,6 @@ namespace Purplepen
 			}
 		}
 		
-		private void attach_dots(dot entity)
-		{
-			this.SendPropertyChanging();
-			entity.comment = this;
-		}
-		
-		private void detach_dots(dot entity)
-		{
-			this.SendPropertyChanging();
-			entity.comment = null;
-		}
-		
 		private void attach_uploadversions(uploadversion entity)
 		{
 			this.SendPropertyChanging();
@@ -433,6 +421,18 @@ namespace Purplepen
 		}
 		
 		private void detach_uploadversions(uploadversion entity)
+		{
+			this.SendPropertyChanging();
+			entity.comment = null;
+		}
+		
+		private void attach_dots(dot entity)
+		{
+			this.SendPropertyChanging();
+			entity.comment = this;
+		}
+		
+		private void detach_dots(dot entity)
 		{
 			this.SendPropertyChanging();
 			entity.comment = null;
@@ -457,7 +457,7 @@ namespace Purplepen
 		
 		private int _project_id;
 		
-		private EntitySet<upload> _uploads;
+		private EntitySet<project> _uploads;
 		
 		private EntityRef<comment> _comment;
 		
@@ -481,7 +481,7 @@ namespace Purplepen
 		
 		public uploadversion()
 		{
-			this._uploads = new EntitySet<upload>(new Action<upload>(this.attach_uploads), new Action<upload>(this.detach_uploads));
+			this._uploads = new EntitySet<project>(new Action<project>(this.attach_uploads), new Action<project>(this.detach_uploads));
 			this._comment = default(EntityRef<comment>);
 			OnCreated();
 		}
@@ -610,8 +610,8 @@ namespace Purplepen
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="uploadversion_upload", Storage="_uploads", ThisKey="project_id", OtherKey="upload_id")]
-		public EntitySet<upload> uploads
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="uploadversion_project", Storage="_uploads", ThisKey="project_id", OtherKey="project_id")]
+		public EntitySet<project> projects
 		{
 			get
 			{
@@ -677,13 +677,13 @@ namespace Purplepen
 			}
 		}
 		
-		private void attach_uploads(upload entity)
+		private void attach_uploads(project entity)
 		{
 			this.SendPropertyChanging();
 			entity.uploadversion = this;
 		}
 		
-		private void detach_uploads(upload entity)
+		private void detach_uploads(project entity)
 		{
 			this.SendPropertyChanging();
 			entity.uploadversion = null;
@@ -969,7 +969,7 @@ namespace Purplepen
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.uploads")]
-	public partial class upload : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class project : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -988,23 +988,23 @@ namespace Purplepen
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onupload_idChanging(int value);
-    partial void Onupload_idChanged();
+    partial void Onproject_idChanging(int value);
+    partial void Onproject_idChanged();
     partial void Onuser_idChanging(int value);
     partial void Onuser_idChanged();
     partial void OnnameChanging(string value);
     partial void OnnameChanged();
     #endregion
 		
-		public upload()
+		public project()
 		{
 			this._users = new EntitySet<user>(new Action<user>(this.attach_users), new Action<user>(this.detach_users));
 			this._uploadversion = default(EntityRef<uploadversion>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_upload_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int upload_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="upload_id", Storage="_upload_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int project_id
 		{
 			get
 			{
@@ -1014,15 +1014,11 @@ namespace Purplepen
 			{
 				if ((this._upload_id != value))
 				{
-					if (this._uploadversion.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onupload_idChanging(value);
+					this.Onproject_idChanging(value);
 					this.SendPropertyChanging();
 					this._upload_id = value;
-					this.SendPropertyChanged("upload_id");
-					this.Onupload_idChanged();
+					this.SendPropertyChanged("project_id");
+					this.Onproject_idChanged();
 				}
 			}
 		}
@@ -1067,7 +1063,7 @@ namespace Purplepen
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="upload_user", Storage="_users", ThisKey="user_id", OtherKey="user_id")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="project_user", Storage="_users", ThisKey="user_id", OtherKey="user_id")]
 		public EntitySet<user> users
 		{
 			get
@@ -1080,7 +1076,7 @@ namespace Purplepen
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="uploadversion_upload", Storage="_uploadversion", ThisKey="upload_id", OtherKey="project_id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="uploadversion_project", Storage="_uploadversion", ThisKey="project_id", OtherKey="project_id", IsForeignKey=true)]
 		public uploadversion uploadversion
 		{
 			get
@@ -1097,12 +1093,12 @@ namespace Purplepen
 					if ((previousValue != null))
 					{
 						this._uploadversion.Entity = null;
-						previousValue.uploads.Remove(this);
+						previousValue.projects.Remove(this);
 					}
 					this._uploadversion.Entity = value;
 					if ((value != null))
 					{
-						value.uploads.Add(this);
+						value.projects.Add(this);
 						this._upload_id = value.project_id;
 					}
 					else
@@ -1137,13 +1133,13 @@ namespace Purplepen
 		private void attach_users(user entity)
 		{
 			this.SendPropertyChanging();
-			entity.upload = this;
+			entity.project = this;
 		}
 		
 		private void detach_users(user entity)
 		{
 			this.SendPropertyChanging();
-			entity.upload = null;
+			entity.project = null;
 		}
 	}
 	
@@ -1159,10 +1155,6 @@ namespace Purplepen
 		
 		private string _name;
 		
-		private string _familyname;
-		
-		private string _email;
-		
 		private int _permission;
 		
 		private int _comments_plus;
@@ -1175,7 +1167,7 @@ namespace Purplepen
 		
 		private EntitySet<ranking> _rankings;
 		
-		private EntityRef<upload> _upload;
+		private EntityRef<project> _upload;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1187,10 +1179,6 @@ namespace Purplepen
     partial void Onfb_idChanged();
     partial void OnnameChanging(string value);
     partial void OnnameChanged();
-    partial void OnfamilynameChanging(string value);
-    partial void OnfamilynameChanged();
-    partial void OnemailChanging(string value);
-    partial void OnemailChanged();
     partial void OnpermissionChanging(int value);
     partial void OnpermissionChanged();
     partial void Oncomments_plusChanging(int value);
@@ -1206,7 +1194,7 @@ namespace Purplepen
 		public user()
 		{
 			this._rankings = new EntitySet<ranking>(new Action<ranking>(this.attach_rankings), new Action<ranking>(this.detach_rankings));
-			this._upload = default(EntityRef<upload>);
+			this._upload = default(EntityRef<project>);
 			OnCreated();
 		}
 		
@@ -1270,46 +1258,6 @@ namespace Purplepen
 					this._name = value;
 					this.SendPropertyChanged("name");
 					this.OnnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_familyname", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string familyname
-		{
-			get
-			{
-				return this._familyname;
-			}
-			set
-			{
-				if ((this._familyname != value))
-				{
-					this.OnfamilynameChanging(value);
-					this.SendPropertyChanging();
-					this._familyname = value;
-					this.SendPropertyChanged("familyname");
-					this.OnfamilynameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string email
-		{
-			get
-			{
-				return this._email;
-			}
-			set
-			{
-				if ((this._email != value))
-				{
-					this.OnemailChanging(value);
-					this.SendPropertyChanging();
-					this._email = value;
-					this.SendPropertyChanged("email");
-					this.OnemailChanged();
 				}
 			}
 		}
@@ -1427,8 +1375,8 @@ namespace Purplepen
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="upload_user", Storage="_upload", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
-		public upload upload
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="project_user", Storage="_upload", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
+		public project project
 		{
 			get
 			{
@@ -1436,7 +1384,7 @@ namespace Purplepen
 			}
 			set
 			{
-				upload previousValue = this._upload.Entity;
+				project previousValue = this._upload.Entity;
 				if (((previousValue != value) 
 							|| (this._upload.HasLoadedOrAssignedValue == false)))
 				{
@@ -1456,7 +1404,7 @@ namespace Purplepen
 					{
 						this._user_id = default(int);
 					}
-					this.SendPropertyChanged("upload");
+					this.SendPropertyChanged("project");
 				}
 			}
 		}

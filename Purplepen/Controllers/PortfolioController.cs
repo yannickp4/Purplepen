@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Purplepen.Models;
 
 namespace Purplepen.Controllers
 {
@@ -13,6 +14,8 @@ namespace Purplepen.Controllers
 
         public ActionResult Portfolio()
         {
+            Upload projects = new Upload();
+            ViewBag.projects = projects.allProjects(65465416);
             return View();
         }
 

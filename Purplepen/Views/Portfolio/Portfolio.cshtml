@@ -13,8 +13,8 @@
                         @ViewBag.projects
 @foreach (var item in ViewBag.projects) { 
             <div class="listItem">
-            <h3 class="itemTitle">@item.name</h3>
-            <img src="toinfintyandbeyond" alt="listItemThumb" />
+            <h3 class="itemTitle">@item.title</h3>
+            <img src="~/uploads/@item.latestVersion" alt=@item.title />
         </div>
 }
 

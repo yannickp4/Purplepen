@@ -45,7 +45,7 @@ namespace Purplepen.Controllers
                     now += DateTime.Now.ToString("mm");
                     now += DateTime.Now.ToString("ss");
                     // store the file inside ~/App_Data/uploads folder
-                    var path = Path.Combine(Server.MapPath("~/App_Data/uploads/"), now+fileName);
+                    var path = Path.Combine(Server.MapPath("~/uploads/"), now+fileName);
                     file.SaveAs(path);
                     //save into database
                     project p = new project();
@@ -61,7 +61,7 @@ namespace Purplepen.Controllers
                         p.name = form["txtTitle"];
                         u.version_id = 0;
                     }
-                    u.path = fileName;
+                    u.path = now+fileName;
                     u.description=form["txtDescription"];
                     u.datum=DateTime.Now;
                     Upload uploadimage = new Upload();

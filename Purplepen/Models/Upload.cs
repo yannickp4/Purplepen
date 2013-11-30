@@ -9,6 +9,12 @@ namespace Purplepen.Models
     {
         dcPurplepenDataContext dc = new dcPurplepenDataContext();
 
+        public class ownproject {
+            public String latestVersion{ get; set; }
+            public String title { get; set; }
+            public int projectId { get; set; }
+        }
+
         public void uploadimage(uploadversion image,project project) {
             if (project.project_id == 0)
             {
@@ -24,6 +30,12 @@ namespace Purplepen.Models
 
         public List<project> allProjects(int user_id) {
             var result = (from p in dc.projects where p.user_id == user_id select p).ToList();
+            return result;
+        }
+
+        public List<ownproject> allOwnProjects(int user_id)
+        {
+            var result = (from p in dc.projects join i in dc.uploadversions on p.project_id equals i.project_id select new ownproject { title=p.name,projectId=p.project_id,latestVersion=i.path}).Distinct().ToList();
             return result;
         }
 

@@ -15,7 +15,7 @@ namespace Purplepen.Controllers
         public ActionResult Portfolio()
         {
             Upload projects = new Upload();
-            ViewBag.projects = projects.allProjects(65465416);
+            ViewBag.projects = projects.allOwnProjects(65465416);
             return View();
         }
 

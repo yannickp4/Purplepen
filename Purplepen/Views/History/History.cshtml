@@ -5,36 +5,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+    <link href="~/Content/css/normalize.css" rel="stylesheet" />
     <link href="~/Content/css/screen.css" rel="stylesheet" />
 </head>
 <body>
-     @RenderPage("~/Views/Navigation/Navigation.cshtml");
-    <h2>History</h2>
-    <div id="listDesigns">
-       <a href="#"> 
-           <div class="listItem">
-            <h3 class="itemTitle">First Upload</h3>
-            <img src="toinfintyandbeyond" alt="listItemThumb" />
+    @RenderPage("~/Views/Navigation/Navigation.cshtml");
+    <div id="wrapper">
+        <h2>History</h2>
+        <div id="listDesigns">
+            <a href="#">
+                <div class="listItem">
+                    <h3 class="itemTitle">First Upload</h3>
+                    <img src="toinfintyandbeyond" alt="listItemThumb" />
+                </div>
+            </a>
+            <a href="#">
+                <div class="listItem">
+                    <h3 class="itemTitle">Second Upload</h3>
+                    <img src="toinfintyandbeyond" alt="listItemThumb" />
+                </div>
+            </a>
+            <a href="#">
+                <div class="listItem">
+                    <h3 class="itemTitle">sfsdf</h3>
+                    <img src="toinfintyandbeyond" alt="listItemThumb" />
+                </div>
+            </a>
+            <a href="#">
+                <div class="listItem">
+                    <h3 class="itemTitle">dsfsdfdsf</h3>
+                    <img src="toinfintyandbeyond" alt="listItemThumb" />
+                </div>
+            </a>
         </div>
-        </a>
-        <a href="#"> 
-           <div class="listItem">
-            <h3 class="itemTitle">Second Upload</h3>
-            <img src="toinfintyandbeyond" alt="listItemThumb" />
-        </div>
-        </a>
-        <a href="#"> 
-           <div class="listItem">
-            <h3 class="itemTitle">sfsdf</h3>
-            <img src="toinfintyandbeyond" alt="listItemThumb" />
-        </div>
-        </a>
-        <a href="#"> 
-           <div class="listItem">
-            <h3 class="itemTitle">dsfsdfdsf</h3>
-            <img src="toinfintyandbeyond" alt="listItemThumb" />
-        </div>
-        </a>
     </div>
 </body>
 </html>

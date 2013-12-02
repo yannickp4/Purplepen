@@ -4,13 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Title of the document</title>
+    <title>Upload</title>
+    <link href="~/Content/css/normalize.css" rel="stylesheet" />
     <link href="~/Content/css/screen.css" rel="stylesheet" />
 </head>
 
 <body>
      @RenderPage("~/Views/Navigation/Navigation.cshtml")
-    <h1>Upload your design</h1>
+ <div id="wrapper">
+    <h2>Upload your design</h2>
       @using (Html.BeginForm("ImageUpload", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" })){
     <form method="post">
         <fieldset name="new">
@@ -19,7 +21,7 @@
             <label>Description</label><textarea name="txtDescription" id="txtDescription" required></textarea><br />
         </fieldset>
         <input type="file" name="file" />
-        <input type="submit" />
+        <input type="submit" value="Upload" />
     </form><br /><br /><br />
       }
 
@@ -37,10 +39,10 @@
             <label>Description</label><textarea name="txtDescription" required></textarea>
         </fieldset>
         <input type="file" name="file" />
-        <input type="submit" />
+        <input type="submit" value="Upload" />
     </form>
       }
-
+</div>
 </body>
 
 </html>

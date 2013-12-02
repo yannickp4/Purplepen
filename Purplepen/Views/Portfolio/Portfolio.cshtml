@@ -6,19 +6,24 @@
     <title>Portfolio</title>
     <link href="~/Content/css/screen.css" rel="stylesheet" />
 </head>
-<body> 
-     @RenderPage("~/Views/Navigation/Navigation.cshtml")
-     <h2>Portfolio</h2>
-    <div id="listDesigns">
-                        @ViewBag.projects
-@foreach (var item in ViewBag.projects) { 
-            <div class="listItem">
-            <h3 class="itemTitle">@item.title</h3>
-            <img src="~/uploads/@item.latestVersion" alt=@item.title />
+<body>
+    @RenderPage("~/Views/Navigation/Navigation.cshtml")
+    <div id="wrapper">
+        <h2>Portfolio</h2>
+        <div id="listDesigns">
+            @ViewBag.projects
+            @foreach (var item in ViewBag.projects)
+            { 
+                <a href="#">
+                    <div class="listItem">
+                        <h3 class="itemTitle">@item.title</h3>
+                        <img src="~/uploads/@item.latestVersion" alt=@item.title />
+                    </div>
+                </a>
+            }
+
+
         </div>
-}
-
-
     </div>
 </body>
 </html>

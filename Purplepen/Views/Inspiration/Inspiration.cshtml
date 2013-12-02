@@ -8,25 +8,27 @@
 
 </head>
 <body>
-     @RenderPage("~/Views/Navigation/Navigation.cshtml");
-    <form id="formSubmit">
-        <input name="url" type="text" required />
-        <input name="sumbit" type="button" value="Submit" />
-    </form>
-    <form id="formBrowse">
-        <input name="url" type="text" required />
-        <input name="browse" type="button" value="Browse" />
-        <input name="upload" type="button" value="Upload" />
-    </form>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
+    @RenderPage("~/Views/Navigation/Navigation.cshtml");
+    <div id="wrapper">
+        <form id="formSubmit">
+            <input name="url" type="text" required />
+            <input name="sumbit" type="button" value="Submit" />
+        </form>
+        <form id="formBrowse">
+            <input name="url" type="text" required />
+            <input name="browse" type="button" value="Browse" />
+            <input name="upload" type="button" value="Upload" />
+        </form>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+    </div>
 </body>
 </html>

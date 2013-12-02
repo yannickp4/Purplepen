@@ -2,9 +2,15 @@
     ViewBag.Title = "Ranking";
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head><title>Ranking</title></head>
+<head>
+    <link href="~/Content/css/normalize.css" rel="stylesheet" />
+    <link href="~/Content/css/screen.css" rel="stylesheet" />
+    <title>Ranking</title>
+
+</head>
 <body>
      @RenderPage("~/Views/Navigation/Navigation.cshtml");
+     <div id="wrapper">
     <div id="colRight">
         <h2>Your Rank</h2>
         <img src="#" alt="rank image" />
@@ -56,5 +62,6 @@
             </ul>
         </div>
     </div>
+         </div>
 </body>
 </html>

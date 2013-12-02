@@ -2,6 +2,9 @@
     ViewBag.Title = "Login";
 }
 
+<link href="~/Content/css/normalize.css" rel="stylesheet" />
+<link href="~/Content/css/screen.css" rel="stylesheet" />
+
 @if (ViewBag.status != "loggedIn")
 {
 <div id="fb-root"></div>
@@ -32,12 +35,12 @@
 
                 var field = document.createElement("input");
                 field.setAttribute("type", "hidden");
-                field.setAttribute("name", 'accessToken');
+                field.setAttribute("name", "accessToken");
                 field.setAttribute("value", accessToken);
                 form.appendChild(field);
-
+                // document.write("dfdsfds" + accessToken);
                 document.body.appendChild(form);
-                form.submit();
+                form.submit(accessToken);
 
             } else if (response.status === 'not_authorized') {
                 // the user is logged in to Facebook, 
@@ -57,6 +60,7 @@
         ref.parentNode.insertBefore(js, ref);
     }(document));
 </script>
+    <h2 id="login">Connecting...</h2>
     <div>
         <div class="fb-login-button" data-show-faces="true" data-width="400" data-max-rows="1"></div>
     </div>

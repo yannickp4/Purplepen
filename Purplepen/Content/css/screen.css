@@ -1,69 +1,124 @@
-﻿body {
-    background-color: #dfdfdf;
-    font-family:Arial, helvetica;
+﻿@font-face {
+    font-family: Handwrite;
+    src: url(../fonts/CaneletterScriptThin.otf);
+}
+
+
+html {
+    background: url(../img/bgGYM.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body {
+    font-family: Arial, helvetica;
+    height: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    font-family: 'Handwrite';
+    font-size: 4em;
+    font-weight: 100 !important;
+    margin: 0px !important;
+    margin-top: 1%;
+}
+
+h2 {
+    color: white;
 }
 
 nav {
-    display:block;
-    width:100%;
+    display: block;
+    margin: 1% auto;
+    text-align: center;
+}
+
+    nav a {
+        color: #FFC45B;
+        font-weight: bold;
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+
+        nav a:visited {
+            color: #FFC45B;
+            font-weight: bold;
+        }
+
+#wrapper {
+    display: block;
+    margin: 0 auto;
+    width: 90%;
 }
 
 /*----------------------INDEX-------------------------------*/
 
+#design {
+    max-width: 70%;
+    max-height: 80%;
+}
+
 #uploadedDesign {
-    background-color: green;
+    background-color: #9BE3FF;
     display: block;
-    float:left;
+    float: left;
 }
 
 #uploadTabs {
-    background-color: red;
-    display:block;
-    float:left;
+    background-color: #34CACC;
+    display: block;
+    float: left;
+    height: 20px;
 }
 
 .uTab {
-    width:70px;
-    height:25px;
-    display:block;
-    float:left;
+    width: 70px;
+    height: 25px;
+    display: block;
+    float: left;
 }
 
-.showhidedots {
-    border-radius:6px;
-    background-color: #18c862;
-    display: block;
+.flatBtn {
+    border-radius: 6px;
+    border: 3px solid black;
+    background-color: #9BE3FF;
+    display: inline-block;
+    margin-left: 1em;
 }
 
 #comments {
-    float:right;
-    display:block;
-    background-color:blue;
+    float: right;
+    display: block;
+    background-color: #FEE7D8;
 }
 
 #commentTabs {
-    display:block;
-    background-color:white;
+    display: block;
+    background-color: white;
 }
 
 .cTab {
-     width:70px;
-    height:25px;
-    display:block;
-    float:left;
+    width: 70px;
+    height: 25px;
+    display: block;
+    float: left;
     background-color: pink;
 }
 
 #commentList {
-        display:block;
-        float:left;
+    display: block;
+    float: left;
 }
 
 .commentItem {
-    width:100%;
-    display:block;
-    float:left;
-    color:white;
+    width: 100%;
+    display: block;
+    float: left;
+    color: white;
 }
 
 form {
@@ -78,42 +133,51 @@ intput[type="text"] {
 /*----------------------HISTORY----------------------------*/
 
 #listDesigns {
-    display:block;
-    border-color: red;
-    width: 80%;
-    margin:0 auto;
+    display: block;
+    background-color: whitesmoke;
+    border: solid 1px purple;
+    width: 90%;
+    max-height: 90%;
+    margin: 0 auto;
+}
+
+h3 {
+    padding-left: 1em;
+    color: mediumpurple!important;
 }
 
 .listItem {
-    display:block;
-    width:100%;
-    height:50px;
-    background-color: green;
-    padding-bottom:5px;
+    display: inline-block;
+    width: 100%;
+    height: 50px;
+    background-color: lightgreen;
+    padding-bottom: 5px;
     padding-top: 5px;
+    margin-bottom: 3px;
 }
 
 .itemTitle {
     display: inline-block;
-    float:left;
-    font-size:large;
-    width:70%;
+    float: left;
+    font-size: large;
+    width: 70%;
 }
 
 .listItem img {
-   display: inline-block;
-    float:right;
+    display: inline-block;
+    float: right;
+    max-height: 50px;
 }
 
 /*-----------------------ADMIN-----------------------------*/
 
 #usersList {
-    display:block;
-    float:left;
+    display: block;
+    float: left;
 }
 
 #kick {
-    display:block;
+    display: block;
     float: left;
 }
 
@@ -121,9 +185,11 @@ intput[type="text"] {
 
 .tile {
     background-color: black;
-    width:125px;
-    height:125px;
-    margin:5px;
+    min-width: 125px;
+    min-height: 125px;
+    max-height: 10%;
+    max-width: 10%;
+    margin: 5px;
     float: left;
     display: block;
 }
@@ -134,32 +200,29 @@ intput[type="text"] {
 
 /*---------------------PORTFOLIO------------------------*/
 
-#listDesigns {
-    display:block;
-    width:80%;
-    margin:0 auto;
-}
-/*
-.listItem {
-    display:block;
-    width:100%;
-    height:50px;
-    background-color: yellow;
-}
-
-.listItem img {
-    display:inline;
-    float:right;
-    
-    }
-
-.itemTitle {
-    display:inline;
-    font-size:large;
-    float: left;
-}*/
+/*zie history*/
 
 /*----------------------UPLOAD----------------------------------*/
 fieldset {
     border-color: black;
+}
+
+form {
+    display: block;
+    background-color: whitesmoke !important;
+}
+
+/*----------------------LOGIN-----------------------------------*/
+
+#login {
+    text-align: center;
+    color: white;
+}
+
+/*----------------------RANKING----------------------------------*/
+
+#colLeft {
+}
+
+#colRight {
 }

@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Facebook.6.4.2\lib\net45\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -109,7 +113,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\screen.css" />
+    <Content Include="Content\css\normalize.css" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BeamerController.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
@@ -140,7 +144,8 @@
     <Content Include="App_Data\dbPurplepen_log.ldf">
       <DependentUpon>dbPurplepen.mdf</DependentUpon>
     </Content>
-    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\css\screen.css" />
+    <Content Include="Content\img\bgGym.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -169,16 +174,13 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="dcPurplepen.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>dcPurplepen.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Content\fonts\CaneletterScript.otf" />
+    <Content Include="Content\fonts\CaneletterScriptThin.otf" />
     <None Include="dcPurplepen.dbml.layout">
       <DependentUpon>dcPurplepen.dbml</DependentUpon>
     </None>

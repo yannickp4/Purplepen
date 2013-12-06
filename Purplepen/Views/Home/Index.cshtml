@@ -8,6 +8,8 @@
     <link href="~/Content/css/normalize.css" rel="stylesheet" />
     <link href="~/Content/css/screen.css" rel="stylesheet" />
     <script type="text/javascript" src="http://code.createjs.com/easeljs-0.6.0.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/dot.js"></script>
+    
 
 </head>
 <body>
@@ -23,30 +25,95 @@
             <input type="button" class="flatBtn" value="Show dots" onclick="showDots()" />
             <input type="button" class="flatBtn" value="Hide dots" onclick="removeDots()" />
             <input type="button" class="flatBtn" value="View large img" onclick="showFullImg()" />
-            <div id="design">
-                <canvas id="placeDots" width="500" height="500" style="background-color: black;"></canvas>
-                <p id="designDescription">Description</p>
-            </div>
-        </div>
-        <div id="comments">
-            <div id="commentTabs">
-                <div class="cTab" id="generalTab"><a>General</a></div>
-                <div class="cTab" id="specificTabs"><a>Specific</a></div>
-            </div>
-            <div id="commentList">
-                <div class="commentItem">
-                    <img src="#" alt="userImg" />
-                    <h4>Username</h4>
-                    <p>Comment</p>
+            
+            <div id="design" style="position:absolute; display: block;" >
+                <canvas id="placeDots" width="500" height="500" style="background-color: black;"></canvas>               
+                    <p id="designDescription">Description</p>
+            @foreach (var item in ViewBag.alldots)
+            {
+                <div id="dotDiv@(item.ID)" class="dotDiv" style="height: 100px; width:200px; display:block; position:absolute; top:@(item.Y - 15)px; left:@(item.X - 15)px; background-color: white; border-radius: 5px; visibility: hidden;"> 
+                    <h4>@item.naam</h4>
+                    <p>@item.description</p>  
+                    <!----<form id="plusMin" name="plusMin" method="post">
+                        <input id="plus" name="plus" type="submit" value="Send" />
+                        <input id="min" name="min" type="submit" value="Send" />
+                    </form>-->
                 </div>
-            </div>
-            <form>
-                <input type="text" required />
-                <input type="submit" value="Send" />
-            </form>
-        </div>
-    </div>
-    <script type="text/javascript" src="~/Scripts/dot.js"></script>
-</body>
+                <div id="dot@(item.ID)" onclick="showDotID(@item.ID)" class="dotstyle" style="height: 20px; width:20px; display:block; position:absolute; top:@(item.Y - 10)px; left:@(item.X - 10)px; background-color: red; border-radius: 10px;">   
+                </div>
 
+             }
+            </div>
+            </div>
+            <div id="comments">
+                <div id="commentTabs">
+                    <div class="cTab" id="generalTab"><a>General</a></div>
+                    <div class="cTab" id="specificTabs"><a>Specific</a></div>
+                </div>
+
+
+                <div id="PartialView">
+                    @Html.Partial("CommentView")
+
+                </div>
+
+
+                <form method="post">
+
+                    <input id="commentText" name="commentText" type="text" required />
+                    <input id="submitComment" type="submit" value="Send" />
+                </form>
+
+
+            </div>
+            <div id="PartialView">
+                @Html.Partial("DotComment")
+
+            </div>
+        </div>
+        <script type="text/javascript" src="~/Scripts/dot.js"></script>
+   
+     <script type="text/javascript">
+         var vis = 0;
+
+         function showDotID(id)
+         {
+             
+                 var idDiv = "dotDiv" + id;
+                 //alert(idDiv);
+                 var elems = document.getElementsByClassName('dotDiv');
+                 for (var i = 0; i < elems.length; i++) {
+                     elems[i].style.visibility = 'hidden';
+                 }
+                 if (vis == 0) {
+                 document.getElementById(idDiv).style.visibility = "visible";
+                 vis = 1;
+             }
+             else {
+                     document.getElementById(idDiv).style.visibility = "hidden";
+                     vis = 0;
+             }
+             
+         }
+
+         function removeDots() {
+
+             var elems = document.getElementsByClassName('dotstyle');
+             for (var i = 0; i < elems.length; i++) {
+                 elems[i].style.visibility = 'hidden';
+             }
+         }
+
+         function showDots() {
+             //  alert(stage);
+
+             var elems = document.getElementsByClassName('dotstyle');
+             for (var i = 0; i < elems.length; i++) {
+                 elems[i].style.visibility = 'visible';
+             }
+         }
+    </script>
+            
+    </body>
+       
 </html>

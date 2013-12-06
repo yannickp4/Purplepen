@@ -12,7 +12,7 @@
       <Column Name="category" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="dot_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="comment_uploadversion" Member="uploadversions" ThisKey="upload_id" OtherKey="version_id" Type="uploadversion" />
-      <Association Name="comment_dot" Member="dots" ThisKey="dot_id" OtherKey="dot_id" Type="dot" />
+      <Association Name="dot_comment" Member="dot" ThisKey="dot_id" OtherKey="dot_id" Type="dot" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.version" Member="uploadversions">
@@ -25,14 +25,6 @@
       <Column Name="project_id" Type="System.Int32" DbType="Int" CanBeNull="false" />
       <Association Name="uploadversion_project" Member="projects" Storage="_uploads" ThisKey="project_id" OtherKey="project_id" Type="project" />
       <Association Name="comment_uploadversion" Member="comment" ThisKey="version_id" OtherKey="upload_id" Type="comment" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.dots" Member="dots">
-    <Type Name="dot">
-      <Column Name="dot_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="dot_x" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="dot_y" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="comment_dot" Member="comment" ThisKey="dot_id" OtherKey="dot_id" Type="comment" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ranking" Member="rankings">
@@ -63,6 +55,14 @@
       <Column Name="rank_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="user_ranking" Member="rankings" ThisKey="rank_id" OtherKey="rank_id" Type="ranking" />
       <Association Name="project_user" Member="project" Storage="_upload" ThisKey="user_id" OtherKey="user_id" Type="project" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.dots" Member="dots">
+    <Type Name="dot">
+      <Column Name="dot_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dot_x" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dot_y" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="dot_comment" Member="comments" ThisKey="dot_id" OtherKey="dot_id" Type="comment" />
     </Type>
   </Table>
 </Database>

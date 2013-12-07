@@ -6,42 +6,40 @@
 <head>
     <title>Upload</title>
     <link href="~/Content/css/normalize.css" rel="stylesheet" />
-    <link href="~/Content/css/screen.css" rel="stylesheet" />
+    <link href="~/Content/css/upload.css" rel="stylesheet" />
 </head>
 
 <body>
      @RenderPage("~/Views/Navigation/Navigation.cshtml")
  <div id="wrapper">
-    <h2>Upload your design</h2>
+     <div class="form">
+         <h3>New design project</h3>
       @using (Html.BeginForm("ImageUpload", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" })){
     <form method="post">
-        <fieldset name="new">
-            <legend>New Design</legend>
-            <label>Title</label><input type="text" name="txtTitle" id="txtTitle" required /><br />
-            <label>Description</label><textarea name="txtDescription" id="txtDescription" required></textarea><br />
-        </fieldset>
+            <label class="label">Title</label><input type="text" name="txtTitle" id="txtTitle" class="input" required />
+            <label class="label">Description</label><textarea name="txtDescription" id="txtDescription" class="textarea" rows="8" required></textarea>
         <input type="file" name="file" />
-        <input type="submit" value="Upload" />
-    </form><br /><br /><br />
+        <input type="submit" value="Upload" class="submit" />
+    </form>
       }
-
+         </div>
+     <div class="form">
           @using (Html.BeginForm("ImageUpload", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" })){
     <form method="post">
-        <fieldset name="update">
-            <legend>Update Design</legend>
-            Which design are you updating?
+            <h3>Update project version</h3>
+            <label class="label">Which design are you updating?</label>
             <select required name="project_id">
                 @ViewBag.allProjects
 @foreach (var item in ViewBag.allProjects) { 
     <option value=@item.project_id>@item.name</option>
 }
-            </select><br />
-            <label>Description</label><textarea name="txtDescription" required></textarea>
-        </fieldset>
+            </select>
+            <label class="label">Description</label><textarea name="txtDescription" rows="8" class="textarea" required></textarea>
         <input type="file" name="file" />
-        <input type="submit" value="Upload" />
+        <input type="submit" value="Upload" class="submit"/>
     </form>
       }
+         </div>
 </div>
 </body>
 

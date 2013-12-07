@@ -18,6 +18,11 @@ namespace Purplepen.Controllers
             ViewBag.projects = projects.allOwnProjects(65465416);
             return View();
         }
+        public ActionResult deleteProject(int projectid) {
+            Upload projects = new Upload();
+            projects.deleteProject(projectid);
+            return RedirectToAction("Portfolio");
+        }
 
     }
 }

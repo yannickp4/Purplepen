@@ -1,42 +1,32 @@
 ﻿@{
     ViewBag.Title = "History";
 }
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
-    <link href="~/Content/css/normalize.css" rel="stylesheet" />
-    <link href="~/Content/css/screen.css" rel="stylesheet" />
+    <title>History</title>
+        <link href="~/Content/css/reset.css" rel="stylesheet" />
+        <link href="~/Content/css/portfolio.css" rel="stylesheet" />
 </head>
-<body>
-    @RenderPage("~/Views/Navigation/Navigation.cshtml");
+<body> 
+     @RenderPage("~/Views/Navigation/Navigation.cshtml")
     <div id="wrapper">
-        <h2>History</h2>
-        <div id="listDesigns">
-            <a href="#">
-                <div class="listItem">
-                    <h3 class="itemTitle">First Upload</h3>
-                    <img src="toinfintyandbeyond" alt="listItemThumb" />
-                </div>
-            </a>
-            <a href="#">
-                <div class="listItem">
-                    <h3 class="itemTitle">Second Upload</h3>
-                    <img src="toinfintyandbeyond" alt="listItemThumb" />
-                </div>
-            </a>
-            <a href="#">
-                <div class="listItem">
-                    <h3 class="itemTitle">sfsdf</h3>
-                    <img src="toinfintyandbeyond" alt="listItemThumb" />
-                </div>
-            </a>
-            <a href="#">
-                <div class="listItem">
-                    <h3 class="itemTitle">dsfsdfdsf</h3>
-                    <img src="toinfintyandbeyond" alt="listItemThumb" />
-                </div>
-            </a>
+     <h2>History</h2>
+    <div id="listDesigns">
+
+        @foreach (var item in ViewBag.projects) { 
+    
+    
+<div class="project" style="background-image:url(../uploads/@item.latestVersion);height:@(item.imgHeight)px; top:@(item.top)px;left:@(item.left)px;">
+<div class="mask" style="height:@(item.imgHeight)px; width:@(item.imgWidth)px; margin-left:@(item.marginleft)px;">
+<div class="para" style="width:@(item.imgWidth)px">
+<h2>@item.title</h2>
+<p>@item.title</p>
+<a class="action" href="@Url.Action("ProjectDetail", "ProjectDetail", new { projectid=@item.projectId})">see project</a>
+<a class="action" href="@Url.Action("deleteProject", "Portfolio", new { projectid=@item.projectId})">delete project</a>
+</div>
+</div>
+</div>
+}
         </div>
     </div>
 </body>

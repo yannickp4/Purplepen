@@ -113,6 +113,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Purplepen.dll" />
+    <Content Include="bin\Purplepen.pdb" />
     <Content Include="Content\css\normalize.css" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BeamerController.cs" />
@@ -121,6 +123,7 @@
     <Compile Include="Controllers\InspirationController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PortfolioController.cs" />
+    <Compile Include="Controllers\ProjectDetailController.cs" />
     <Compile Include="Controllers\RankingController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="dcPurplepen.designer.cs">
@@ -134,6 +137,9 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Upload.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -166,7 +172,16 @@
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="dcPurplepen.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dcPurplepen.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="dcPurplepen.dbml.layout">
+      <DependentUpon>dcPurplepen.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -174,16 +189,8 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="dcPurplepen.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>dcPurplepen.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Content\fonts\CaneletterScript.otf" />
     <Content Include="Content\fonts\CaneletterScriptThin.otf" />
-    <None Include="dcPurplepen.dbml.layout">
-      <DependentUpon>dcPurplepen.dbml</DependentUpon>
-    </None>
     <Content Include="Views\Admin\Admin.cshtml" />
     <Content Include="Views\History\History.cshtml" />
     <Content Include="Views\Inspiration\Inspiration.cshtml" />
@@ -194,6 +201,11 @@
     <Content Include="Views\Upload\Upload.cshtml" />
     <Content Include="Views\Navigation\Navigation.cshtml" />
     <Content Include="Views\Upload\Error.cshtml" />
+    <Content Include="Views\Home\CommentView.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Home\DotComment.cshtml" />
+    <Content Include="Views\ProjectDetail\ProjectDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

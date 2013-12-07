@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "ProjectDetail";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@ViewBag.projectname ProjectDetail</title>
+    <link href="~/Content/css/reset.css" rel="stylesheet" />
+    <link href="~/Content/css/projectdetail.css" rel="stylesheet" />
+</head>
+<body> 
+@RenderPage("~/Views/Navigation/Navigation.cshtml")
+<div id="wrapper">
+<h2>@ViewBag.projectname ProjectDetail</h2>
+
+<div id="listDesigns">
+@foreach (var item in ViewBag.projectdetail) { 
+<div class="listItem">
+<p>@item.description</p>
+<img src="~/uploads/@item.path" />
+</div>
+}
+
+        </div>
+    </div>
+</body>
+</html>

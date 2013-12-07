@@ -29,7 +29,7 @@
             <div id="design" style="position:absolute; display: block;" >
                 <canvas id="placeDots" width="500" height="500" style="background-color: black;"></canvas>               
                     <p id="designDescription">Description</p>
-            @foreach (var item in ViewBag.alldots)
+            @foreach(var item in ViewBag.alldots)
             {
                 <div id="dotDiv@(item.ID)" class="dotDiv" style="height: 100px; width:200px; display:block; position:absolute; top:@(item.Y - 15)px; left:@(item.X - 15)px; background-color: white; border-radius: 5px; visibility: hidden;"> 
                     <h4>@item.naam</h4>

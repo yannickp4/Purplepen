@@ -4,21 +4,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Portfolio</title>
-    <link href="~/Content/css/screen.css" rel="stylesheet" />
+        <link href="~/Content/css/reset.css" rel="stylesheet" />
+        <link href="~/Content/css/portfolio.css" rel="stylesheet" />
 </head>
 <body> 
      @RenderPage("~/Views/Navigation/Navigation.cshtml")
+    <div id="wrapper">
      <h2>Portfolio</h2>
     <div id="listDesigns">
-                        @ViewBag.projects
-@foreach (var item in ViewBag.projects) { 
-            <div class="listItem" id=""@item.projectId>
-            <h3 class="itemTitle">@item.title</h3>
-            <img src="~/uploads/@item.latestVersion" alt=@item.title />
-        </div>
+
+        @foreach (var item in ViewBag.projects) { 
+    
+    
+<div class="project" style="background-image:url(../uploads/@item.latestVersion);height:@(item.imgHeight)px; top:@(item.top)px;left:@(item.left)px;">
+<div class="mask" style="height:@(item.imgHeight)px; width:@(item.imgWidth)px; margin-left:@(item.marginleft)px;">
+<div class="para" style="width:@(item.imgWidth)px">
+<h2>@item.title</h2>
+<p>@item.title</p>
+<a class="action" href="@Url.Action("ProjectDetail", "ProjectDetail", new { projectid=@item.projectId})">see project</a>
+<a class="action" href="@Url.Action("deleteProject", "Portfolio", new { projectid=@item.projectId})">delete project</a>
+</div>
+</div>
+</div>
 }
-
-
+        </div>
     </div>
 </body>
 </html>

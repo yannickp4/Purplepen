@@ -24,14 +24,14 @@ namespace Purplepen.Models
             dc.SubmitChanges();
         }
 
-        public Int64 checkIfUserExcists(int id)
+        public Int64 checkIfUserExcists(Int64 id)
         {
             Int64 count = (from a in dc.users where a.fb_id == id select a).Count();
             //int countB = Convert.ToInt32(count);
             return count;
         }
 
-        public int checkPermission(int id)
+        public int checkPermission(Int64 id)
         {
             int permision = 666;
             var check = (from p in dc.users where p.fb_id == id select p).First();

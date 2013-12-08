@@ -15,7 +15,7 @@ namespace Purplepen.Models
         public class UserA
         {
             public string Name { get; set; }
-            public int ID { get; set; }
+            public Int64 ID { get; set; }
         }
 
         public void kickThisUser(int ID)

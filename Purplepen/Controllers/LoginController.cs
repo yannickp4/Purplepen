@@ -29,14 +29,14 @@ namespace Purplepen.Controllers
             dynamic result = client.Get("me", new { fields = "name,id" });
 
             User chkUser = new User();
-            Int64 records = (chkUser.checkIfUserExcists(Convert.ToInt32(result.id)));
+            Int64 records = (chkUser.checkIfUserExcists(Convert.ToInt64(result.id)));
             var countRecords = records;
 
             if (countRecords >= 1)
             {
                 //This user is already registered
                 User usr = new Models.User();
-                int per = usr.checkPermission(Convert.ToInt32(result.id));
+                int per = usr.checkPermission(Convert.ToInt64(result.id));
                 if (per == 3)
                 {
                     ViewBag.blacklist = "Blocked";
@@ -46,7 +46,7 @@ namespace Purplepen.Controllers
             else
             {
                 user u = new user();
-                u.fb_id = Convert.ToInt32(result.id);
+                u.fb_id = Convert.ToInt64(result.id);
                 u.name = result.name;
                 u.permission = 0;
                 u.rank_id = 0;

@@ -30,12 +30,12 @@ namespace Purplepen
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void Insertcomment(comment instance);
-    partial void Updatecomment(comment instance);
-    partial void Deletecomment(comment instance);
     partial void Insertuploadversion(uploadversion instance);
     partial void Updateuploadversion(uploadversion instance);
     partial void Deleteuploadversion(uploadversion instance);
+    partial void Insertcomment(comment instance);
+    partial void Updatecomment(comment instance);
+    partial void Deletecomment(comment instance);
     partial void Insertdot(dot instance);
     partial void Updatedot(dot instance);
     partial void Deletedot(dot instance);
@@ -80,19 +80,19 @@ namespace Purplepen
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<comment> comments
-		{
-			get
-			{
-				return this.GetTable<comment>();
-			}
-		}
-		
 		public System.Data.Linq.Table<uploadversion> uploadversions
 		{
 			get
 			{
 				return this.GetTable<uploadversion>();
+			}
+		}
+		
+		public System.Data.Linq.Table<comment> comments
+		{
+			get
+			{
+				return this.GetTable<comment>();
 			}
 		}
 		
@@ -129,6 +129,329 @@ namespace Purplepen
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.version")]
+	public partial class uploadversion : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _version_id;
+		
+		private int _version;
+		
+		private string _path;
+		
+		private string _description;
+		
+		private System.DateTime _datum;
+		
+		private int _project_id;
+		
+		private System.Nullable<int> _viewed;
+
+        private System.DateTime _beamer;
+		
+		private System.Nullable<int> _flag;
+		
+		private EntitySet<project> _projects;
+		
+		private EntityRef<comment> _comment;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onversion_idChanging(int value);
+    partial void Onversion_idChanged();
+    partial void OnversionChanging(int value);
+    partial void OnversionChanged();
+    partial void OnpathChanging(string value);
+    partial void OnpathChanged();
+    partial void OndescriptionChanging(string value);
+    partial void OndescriptionChanged();
+    partial void OndatumChanging(System.DateTime value);
+    partial void OndatumChanged();
+    partial void Onproject_idChanging(int value);
+    partial void Onproject_idChanged();
+    partial void OnviewedChanging(System.Nullable<int> value);
+    partial void OnviewedChanged();
+    partial void OnbeamerChanging(System.DateTime value);
+    partial void OnbeamerChanged();
+    partial void OnflagChanging(System.Nullable<int> value);
+    partial void OnflagChanged();
+    #endregion
+		
+		public uploadversion()
+		{
+			this._projects = new EntitySet<project>(new Action<project>(this.attach_projects), new Action<project>(this.detach_projects));
+			this._comment = default(EntityRef<comment>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_version_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int version_id
+		{
+			get
+			{
+				return this._version_id;
+			}
+			set
+			{
+				if ((this._version_id != value))
+				{
+					if (this._comment.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onversion_idChanging(value);
+					this.SendPropertyChanging();
+					this._version_id = value;
+					this.SendPropertyChanged("version_id");
+					this.Onversion_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_version", DbType="Int NOT NULL")]
+		public int version
+		{
+			get
+			{
+				return this._version;
+			}
+			set
+			{
+				if ((this._version != value))
+				{
+					this.OnversionChanging(value);
+					this.SendPropertyChanging();
+					this._version = value;
+					this.SendPropertyChanged("version");
+					this.OnversionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_path", DbType="VarChar(1000) NOT NULL", CanBeNull=false)]
+		public string path
+		{
+			get
+			{
+				return this._path;
+			}
+			set
+			{
+				if ((this._path != value))
+				{
+					this.OnpathChanging(value);
+					this.SendPropertyChanging();
+					this._path = value;
+					this.SendPropertyChanged("path");
+					this.OnpathChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public string description
+		{
+			get
+			{
+				return this._description;
+			}
+			set
+			{
+				if ((this._description != value))
+				{
+					this.OndescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._description = value;
+					this.SendPropertyChanged("description");
+					this.OndescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_datum", DbType="Date NOT NULL")]
+		public System.DateTime datum
+		{
+			get
+			{
+				return this._datum;
+			}
+			set
+			{
+				if ((this._datum != value))
+				{
+					this.OndatumChanging(value);
+					this.SendPropertyChanging();
+					this._datum = value;
+					this.SendPropertyChanged("datum");
+					this.OndatumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_project_id", DbType="Int NOT NULL")]
+		public int project_id
+		{
+			get
+			{
+				return this._project_id;
+			}
+			set
+			{
+				if ((this._project_id != value))
+				{
+					this.Onproject_idChanging(value);
+					this.SendPropertyChanging();
+					this._project_id = value;
+					this.SendPropertyChanged("project_id");
+					this.Onproject_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_viewed", DbType="Int")]
+		public System.Nullable<int> viewed
+		{
+			get
+			{
+				return this._viewed;
+			}
+			set
+			{
+				if ((this._viewed != value))
+				{
+					this.OnviewedChanging(value);
+					this.SendPropertyChanging();
+					this._viewed = value;
+					this.SendPropertyChanged("viewed");
+					this.OnviewedChanged();
+				}
+			}
+		}
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_beamer")]
+        public System.DateTime beamer
+        {
+            get
+            {
+                return this._beamer;
+            }
+            set
+            {
+                if ((this._beamer != value))
+                {
+                    this.OnbeamerChanging(value);
+                    this.SendPropertyChanging();
+                    this._beamer = value;
+                    this.SendPropertyChanged("beamer");
+                    this.OnbeamerChanged();
+                }
+            }
+        }
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_flag", DbType="Int")]
+		public System.Nullable<int> flag
+		{
+			get
+			{
+				return this._flag;
+			}
+			set
+			{
+				if ((this._flag != value))
+				{
+					this.OnflagChanging(value);
+					this.SendPropertyChanging();
+					this._flag = value;
+					this.SendPropertyChanged("flag");
+					this.OnflagChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="version_upload", Storage="_projects", ThisKey="project_id", OtherKey="project_id")]
+		public EntitySet<project> projects
+		{
+			get
+			{
+				return this._projects;
+			}
+			set
+			{
+				this._projects.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="comment_version", Storage="_comment", ThisKey="version_id", OtherKey="upload_id", IsForeignKey=true)]
+		public comment comment
+		{
+			get
+			{
+				return this._comment.Entity;
+			}
+			set
+			{
+				comment previousValue = this._comment.Entity;
+				if (((previousValue != value) 
+							|| (this._comment.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._comment.Entity = null;
+						previousValue.uploadversions.Remove(this);
+					}
+					this._comment.Entity = value;
+					if ((value != null))
+					{
+						value.uploadversions.Add(this);
+						this._version_id = value.upload_id;
+					}
+					else
+					{
+						this._version_id = default(int);
+					}
+					this.SendPropertyChanged("comment");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_projects(project entity)
+		{
+			this.SendPropertyChanging();
+			entity.uploadversion = this;
+		}
+		
+		private void detach_projects(project entity)
+		{
+			this.SendPropertyChanging();
+			entity.uploadversion = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.comments")]
 	public partial class comment : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -139,7 +462,7 @@ namespace Purplepen
 		
 		private int _upload_id;
 		
-		private int _user_id;
+		private long _user_id;
 		
 		private string _title;
 		
@@ -165,7 +488,7 @@ namespace Purplepen
     partial void Oncomment_idChanged();
     partial void Onupload_idChanging(int value);
     partial void Onupload_idChanged();
-    partial void Onuser_idChanging(int value);
+    partial void Onuser_idChanging(long value);
     partial void Onuser_idChanged();
     partial void OntitleChanging(string value);
     partial void OntitleChanged();
@@ -228,8 +551,8 @@ namespace Purplepen
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int NOT NULL")]
-		public int user_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="BigInt NOT NULL")]
+		public long user_id
 		{
 			get
 			{
@@ -368,7 +691,7 @@ namespace Purplepen
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="comment_uploadversion", Storage="_uploadversions", ThisKey="upload_id", OtherKey="version_id")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="comment_version", Storage="_uploadversions", ThisKey="upload_id", OtherKey="version_id")]
 		public EntitySet<uploadversion> uploadversions
 		{
 			get
@@ -436,329 +759,6 @@ namespace Purplepen
 		{
 			this.SendPropertyChanging();
 			entity.comment = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.version")]
-	public partial class uploadversion : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _version_id;
-		
-		private int _version;
-		
-		private string _path;
-		
-		private string _description;
-		
-		private System.DateTime _datum;
-		
-		private int _project_id;
-		
-		private int _viewed;
-		
-		private System.DateTime _beamer;
-		
-		private int _flag;
-		
-		private EntitySet<project> _uploads;
-		
-		private EntityRef<comment> _comment;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onversion_idChanging(int value);
-    partial void Onversion_idChanged();
-    partial void OnversionChanging(int value);
-    partial void OnversionChanged();
-    partial void OnpathChanging(string value);
-    partial void OnpathChanged();
-    partial void OndescriptionChanging(string value);
-    partial void OndescriptionChanged();
-    partial void OndatumChanging(System.DateTime value);
-    partial void OndatumChanged();
-    partial void Onproject_idChanging(int value);
-    partial void Onproject_idChanged();
-    partial void OnviewedChanging(int value);
-    partial void OnviewedChanged();
-    partial void OnbeamerChanging(System.DateTime value);
-    partial void OnbeamerChanged();
-    partial void OnflagChanging(int value);
-    partial void OnflagChanged();
-    #endregion
-		
-		public uploadversion()
-		{
-			this._uploads = new EntitySet<project>(new Action<project>(this.attach_uploads), new Action<project>(this.detach_uploads));
-			this._comment = default(EntityRef<comment>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_version_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int version_id
-		{
-			get
-			{
-				return this._version_id;
-			}
-			set
-			{
-				if ((this._version_id != value))
-				{
-					if (this._comment.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onversion_idChanging(value);
-					this.SendPropertyChanging();
-					this._version_id = value;
-					this.SendPropertyChanged("version_id");
-					this.Onversion_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_version", DbType="Int NOT NULL")]
-		public int version
-		{
-			get
-			{
-				return this._version;
-			}
-			set
-			{
-				if ((this._version != value))
-				{
-					this.OnversionChanging(value);
-					this.SendPropertyChanging();
-					this._version = value;
-					this.SendPropertyChanged("version");
-					this.OnversionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_path", DbType="VarChar(1000) NOT NULL", CanBeNull=false)]
-		public string path
-		{
-			get
-			{
-				return this._path;
-			}
-			set
-			{
-				if ((this._path != value))
-				{
-					this.OnpathChanging(value);
-					this.SendPropertyChanging();
-					this._path = value;
-					this.SendPropertyChanged("path");
-					this.OnpathChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-		public string description
-		{
-			get
-			{
-				return this._description;
-			}
-			set
-			{
-				if ((this._description != value))
-				{
-					this.OndescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._description = value;
-					this.SendPropertyChanged("description");
-					this.OndescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_datum", DbType="DateTime NOT NULL")]
-		public System.DateTime datum
-		{
-			get
-			{
-				return this._datum;
-			}
-			set
-			{
-				if ((this._datum != value))
-				{
-					this.OndatumChanging(value);
-					this.SendPropertyChanging();
-					this._datum = value;
-					this.SendPropertyChanged("datum");
-					this.OndatumChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_project_id", DbType="Int NOT NULL")]
-		public int project_id
-		{
-			get
-			{
-				return this._project_id;
-			}
-			set
-			{
-				if ((this._project_id != value))
-				{
-					this.Onproject_idChanging(value);
-					this.SendPropertyChanging();
-					this._project_id = value;
-					this.SendPropertyChanged("project_id");
-					this.Onproject_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_viewed")]
-		public int viewed
-		{
-			get
-			{
-				return this._viewed;
-			}
-			set
-			{
-				if ((this._viewed != value))
-				{
-					this.OnviewedChanging(value);
-					this.SendPropertyChanging();
-					this._viewed = value;
-					this.SendPropertyChanged("viewed");
-					this.OnviewedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_beamer")]
-		public System.DateTime beamer
-		{
-			get
-			{
-				return this._beamer;
-			}
-			set
-			{
-				if ((this._beamer != value))
-				{
-					this.OnbeamerChanging(value);
-					this.SendPropertyChanging();
-					this._beamer = value;
-					this.SendPropertyChanged("beamer");
-					this.OnbeamerChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_flag")]
-		public int flag
-		{
-			get
-			{
-				return this._flag;
-			}
-			set
-			{
-				if ((this._flag != value))
-				{
-					this.OnflagChanging(value);
-					this.SendPropertyChanging();
-					this._flag = value;
-					this.SendPropertyChanged("flag");
-					this.OnflagChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="uploadversion_project", Storage="_uploads", ThisKey="project_id", OtherKey="project_id")]
-		public EntitySet<project> projects
-		{
-			get
-			{
-				return this._uploads;
-			}
-			set
-			{
-				this._uploads.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="comment_uploadversion", Storage="_comment", ThisKey="version_id", OtherKey="upload_id", IsForeignKey=true)]
-		public comment comment
-		{
-			get
-			{
-				return this._comment.Entity;
-			}
-			set
-			{
-				comment previousValue = this._comment.Entity;
-				if (((previousValue != value) 
-							|| (this._comment.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._comment.Entity = null;
-						previousValue.uploadversions.Remove(this);
-					}
-					this._comment.Entity = value;
-					if ((value != null))
-					{
-						value.uploadversions.Add(this);
-						this._version_id = value.upload_id;
-					}
-					else
-					{
-						this._version_id = default(int);
-					}
-					this.SendPropertyChanged("comment");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_uploads(project entity)
-		{
-			this.SendPropertyChanging();
-			entity.uploadversion = this;
-		}
-		
-		private void detach_uploads(project entity)
-		{
-			this.SendPropertyChanging();
-			entity.uploadversion = null;
 		}
 	}
 	
@@ -1046,7 +1046,7 @@ namespace Purplepen
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _upload_id;
+		private int _project_id;
 		
 		private int _user_id;
 		
@@ -1075,20 +1075,20 @@ namespace Purplepen
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="upload_id", Storage="_upload_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="upload_id", Storage="_project_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int project_id
 		{
 			get
 			{
-				return this._upload_id;
+				return this._project_id;
 			}
 			set
 			{
-				if ((this._upload_id != value))
+				if ((this._project_id != value))
 				{
 					this.Onproject_idChanging(value);
 					this.SendPropertyChanging();
-					this._upload_id = value;
+					this._project_id = value;
 					this.SendPropertyChanged("project_id");
 					this.Onproject_idChanged();
 				}
@@ -1135,7 +1135,7 @@ namespace Purplepen
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="project_user", Storage="_users", ThisKey="user_id", OtherKey="user_id")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="upload_user", Storage="_users", ThisKey="user_id", OtherKey="user_id")]
 		public EntitySet<user> users
 		{
 			get
@@ -1148,7 +1148,7 @@ namespace Purplepen
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="uploadversion_project", Storage="_uploadversion", ThisKey="project_id", OtherKey="project_id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="version_upload", Storage="_uploadversion", ThisKey="project_id", OtherKey="project_id", IsForeignKey=true)]
 		public uploadversion uploadversion
 		{
 			get
@@ -1171,11 +1171,11 @@ namespace Purplepen
 					if ((value != null))
 					{
 						value.projects.Add(this);
-						this._upload_id = value.project_id;
+						this._project_id = value.project_id;
 					}
 					else
 					{
-						this._upload_id = default(int);
+						this._project_id = default(int);
 					}
 					this.SendPropertyChanged("uploadversion");
 				}
@@ -1223,7 +1223,7 @@ namespace Purplepen
 		
 		private int _user_id;
 		
-		private int _fb_id;
+		private long _fb_id;
 		
 		private string _name;
 		
@@ -1239,7 +1239,7 @@ namespace Purplepen
 		
 		private EntitySet<ranking> _rankings;
 		
-		private EntityRef<project> _upload;
+		private EntityRef<project> _project;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1247,7 +1247,7 @@ namespace Purplepen
     partial void OnCreated();
     partial void Onuser_idChanging(int value);
     partial void Onuser_idChanged();
-    partial void Onfb_idChanging(int value);
+    partial void Onfb_idChanging(long value);
     partial void Onfb_idChanged();
     partial void OnnameChanging(string value);
     partial void OnnameChanged();
@@ -1266,7 +1266,7 @@ namespace Purplepen
 		public user()
 		{
 			this._rankings = new EntitySet<ranking>(new Action<ranking>(this.attach_rankings), new Action<ranking>(this.detach_rankings));
-			this._upload = default(EntityRef<project>);
+			this._project = default(EntityRef<project>);
 			OnCreated();
 		}
 		
@@ -1281,7 +1281,7 @@ namespace Purplepen
 			{
 				if ((this._user_id != value))
 				{
-					if (this._upload.HasLoadedOrAssignedValue)
+					if (this._project.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -1294,8 +1294,8 @@ namespace Purplepen
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fb_id", DbType="Int NOT NULL")]
-		public int fb_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fb_id", DbType="BigInt NOT NULL")]
+		public long fb_id
 		{
 			get
 			{
@@ -1447,26 +1447,26 @@ namespace Purplepen
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="project_user", Storage="_upload", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="upload_user", Storage="_project", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
 		public project project
 		{
 			get
 			{
-				return this._upload.Entity;
+				return this._project.Entity;
 			}
 			set
 			{
-				project previousValue = this._upload.Entity;
+				project previousValue = this._project.Entity;
 				if (((previousValue != value) 
-							|| (this._upload.HasLoadedOrAssignedValue == false)))
+							|| (this._project.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._upload.Entity = null;
+						this._project.Entity = null;
 						previousValue.users.Remove(this);
 					}
-					this._upload.Entity = value;
+					this._project.Entity = value;
 					if ((value != null))
 					{
 						value.users.Add(this);

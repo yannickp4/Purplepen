@@ -22,7 +22,7 @@ namespace Purplepen.Controllers
 
             c.description = form["commentText"];
             c.upload_id = Convert.ToInt32( form["designID"]); //aanpassen
-            c.user_id = Convert.ToInt32( Session["fbID"].ToString()); //aanpassen
+            c.user_id = Convert.ToInt64( Session["fbID"].ToString()); //aanpassen
             c.title = "general"; //aanpassen
             c.score = 0; //aanpassen
             c.datum = DateTime.Now;
@@ -34,6 +34,7 @@ namespace Purplepen.Controllers
 
             if (string.IsNullOrEmpty(form["dotY"]))
             {
+                c.dot_id = 0; 
                 comm.placeComment(c);
             }
             else

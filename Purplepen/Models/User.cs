@@ -24,9 +24,9 @@ namespace Purplepen.Models
             dc.SubmitChanges();
         }
 
-        public int checkIfUserExcists(int id)
+        public Int64 checkIfUserExcists(int id)
         {
-            int count = (from a in dc.users where a.fb_id == id select a).Count();
+            Int64 count = (from a in dc.users where a.fb_id == id select a).Count();
             //int countB = Convert.ToInt32(count);
             return count;
         }

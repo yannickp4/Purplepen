@@ -29,7 +29,7 @@ namespace Purplepen.Controllers
             dynamic result = client.Get("me", new { fields = "name,id" });
 
             User chkUser = new User();
-            int records = (chkUser.checkIfUserExcists(Convert.ToInt32(result.id)));
+            Int64 records = (chkUser.checkIfUserExcists(Convert.ToInt32(result.id)));
             var countRecords = records;
 
             if (countRecords >= 1)

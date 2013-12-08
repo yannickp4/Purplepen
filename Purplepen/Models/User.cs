@@ -30,5 +30,13 @@ namespace Purplepen.Models
             //int countB = Convert.ToInt32(count);
             return count;
         }
+
+        public int checkPermission(int id)
+        {
+            int permision = 666;
+            var check = (from p in dc.users where p.fb_id == id select p).First();
+            permision = check.permission;
+            return permision;
+        }
     }
 }

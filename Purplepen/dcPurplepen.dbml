@@ -23,7 +23,10 @@
       <Column Name="description" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="datum" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="project_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="uploadversion_upload" Member="projects" Storage="_uploads" ThisKey="project_id" OtherKey="project_id" Type="project" />
+      <Column Member="viewed" Type="System.Int32" CanBeNull="false" />
+      <Column Member="beamer" Type="System.DateTime" CanBeNull="false" />
+      <Column Member="flag" Type="System.Int32" CanBeNull="false" />
+      <Association Name="uploadversion_project" Member="projects" Storage="_uploads" ThisKey="project_id" OtherKey="project_id" Type="project" />
       <Association Name="comment_uploadversion" Member="comment" ThisKey="version_id" OtherKey="upload_id" Type="comment" IsForeignKey="true" />
     </Type>
   </Table>
@@ -47,8 +50,8 @@
       <Column Name="upload_id" Member="project_id" Storage="_upload_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="upload_user" Member="users" ThisKey="user_id" OtherKey="user_id" Type="user" />
-      <Association Name="uploadversion_upload" Member="uploadversion" ThisKey="project_id" OtherKey="project_id" Type="uploadversion" IsForeignKey="true" />
+      <Association Name="project_user" Member="users" ThisKey="user_id" OtherKey="user_id" Type="user" />
+      <Association Name="uploadversion_project" Member="uploadversion" ThisKey="project_id" OtherKey="project_id" Type="uploadversion" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.users" Member="users">
@@ -62,7 +65,7 @@
       <Column Name="report" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="rank_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="user_ranking" Member="rankings" ThisKey="rank_id" OtherKey="rank_id" Type="ranking" />
-      <Association Name="upload_user" Member="project" Storage="_upload" ThisKey="user_id" OtherKey="user_id" Type="project" IsForeignKey="true" />
+      <Association Name="project_user" Member="project" Storage="_upload" ThisKey="user_id" OtherKey="user_id" Type="project" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

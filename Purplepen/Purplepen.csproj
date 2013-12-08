@@ -115,6 +115,10 @@
   <ItemGroup>
     <Content Include="bin\Purplepen.dll" />
     <Content Include="bin\Purplepen.pdb" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\bootstrap\bootstrap.min.css" />
     <Content Include="Content\css\normalize.css" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BeamerController.cs" />
@@ -134,7 +138,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Current.cs" />
     <Compile Include="Models\Upload.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
@@ -152,6 +158,7 @@
     </Content>
     <Content Include="Content\css\screen.css" />
     <Content Include="Content\img\bgGym.jpg" />
+    <Content Include="Content\js\jquery-1.10.2.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -36,11 +36,11 @@ namespace Purplepen.Models
             public String naam { get; set; }
         }
 
-        public List<commentName> allComments()
+        public List<commentName> allComments(int ID)
         {
             // var result = (from c in dc.comments select c).ToList();
             var result = (from c in dc.comments
-                          join u in dc.users on c.user_id equals u.user_id
+                          join u in dc.users on c.user_id equals u.fb_id where c.upload_id == ID
                           select new commentName
                           {
                               naam = u.name,
@@ -58,11 +58,11 @@ namespace Purplepen.Models
             public String naam { get; set; }
         }
 
-        public List<dotXY> allDots()
+        public List<dotXY> allDots(int ID)
         {
             var result = (from d in dc.dots
                           join c in dc.comments on d.dot_id equals c.dot_id
-                          join u in dc.users on c.user_id equals u.user_id
+                          join u in dc.users on c.user_id equals u.fb_id where c.upload_id == ID
                           select new dotXY
                           {
                               ID = d.dot_id,

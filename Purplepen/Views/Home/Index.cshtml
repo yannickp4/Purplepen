@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>PurplePen</title>
-    <link href="~/Content/css/normalize.css" rel="stylesheet" />
+     <link href="~/Content/css/normalize.css" rel="stylesheet" />
     <link href="~/Content/css/screen.css" rel="stylesheet" />
     <script type="text/javascript" src="http://code.createjs.com/easeljs-0.6.0.min.js"></script>
     <script type="text/javascript" src="~/Scripts/dot.js"></script>
@@ -14,22 +14,40 @@
 </head>
 <body>
     @RenderPage("~/Views/Navigation/Navigation.cshtml")
-    <!-- KOEKEN  http://msdn.microsoft.com/en-us/library/ms178581.ASPX-->
     <div id="wrapper">
         <div id="uploadedDesign">
-            <div id="uploadTabs">
-                <div class="uTab" id="tab1">1</div>
-                <div class="uTab" id="tab2">2</div>
-                <div class="uTab" id="tab3">3</div>
-            </div>
-            <input type="button" class="flatBtn" value="Show dots" onclick="showDots()" />
+           
+           
+            @foreach (var item in @ViewBag.current)
+            {
+               
+                if (@ViewBag.flag == "flag")
+                { 
+                    <div class="message">This design has been flagged</div>
+                }
+                else
+                {
+                <form method="delete">
+                    <input style="visibility:hidden;" name="ID" value="@item.versionID" />
+                     <input type="button" class="flatBtn" value="Show dots" onclick="showDots()" />
             <input type="button" class="flatBtn" value="Hide dots" onclick="removeDots()" />
-            <input type="button" class="flatBtn" value="View large img" onclick="showFullImg()" />
+                    <a class="flatBtn" href="@Url.Action("Flag", "Home",  new { ID=@item.versionID})">X Flag</a>
+                 
+                </form>
+                }
+                
             
-            <div id="design" style="position:absolute; display: block;" >
-                <canvas id="placeDots" width="500" height="500" style="background-color: black;"></canvas>               
-                    <p id="designDescription">Description</p>
-            @foreach(var item in ViewBag.alldots)
+                <h5>@item.title</h5>
+
+                <div id="design" style="position:absolute; display: block;">
+                    <img id="imgDesign" src="~/uploads/@item.url" style="position:absolute; display: block;" />
+                    <canvas id="placeDots" width="500" height="500"  style="position:absolute; display: block;"></canvas>
+                    <p id="designDescription">@item.description</p>
+
+                </div>
+            }
+
+            @foreach (var item in ViewBag.alldots)
             {
                 <div id="dotDiv@(item.ID)" class="dotDiv" style="height: 100px; width:200px; display:block; position:absolute; top:@(item.Y - 15)px; left:@(item.X - 15)px; background-color: white; border-radius: 5px; visibility: hidden;"> 
                     <h4>@item.naam</h4>
@@ -42,13 +60,13 @@
                 <div id="dot@(item.ID)" onclick="showDotID(@item.ID)" class="dotstyle" style="height: 20px; width:20px; display:block; position:absolute; top:@(item.Y - 10)px; left:@(item.X - 10)px; background-color: red; border-radius: 10px;">   
                 </div>
 
-             }
+            }
             </div>
             </div>
             <div id="comments">
                 <div id="commentTabs">
                     <div class="cTab" id="generalTab"><a>General</a></div>
-                    <div class="cTab" id="specificTabs"><a>Specific</a></div>
+                
                 </div>
 
 
@@ -57,19 +75,21 @@
 
                 </div>
 
-
-                <form method="post">
-
+                      @foreach (var item in @ViewBag.current)
+                      {
+                <form method="post">       
                     <input id="commentText" name="commentText" type="text" required />
-                    <input id="submitComment" type="submit" value="Send" />
+                    <input class="hide" id="designID" name="designID" value="@item.versionID" />
+                    <input class="submitComment" type="submit" value="Send" />
                 </form>
-
-
-            </div>
+                      }
+                    <div class="cTab" id="specificTabs"><a>Specific</a></div>
             <div id="PartialView">
                 @Html.Partial("DotComment")
 
             </div>
+            </div>
+            
         </div>
         <script type="text/javascript" src="~/Scripts/dot.js"></script>
    
@@ -112,6 +132,18 @@
                  elems[i].style.visibility = 'visible';
              }
          }
+
+         /*Canvas resizen*/
+         var canv = document.getElementById("placeDots");
+         var des = document.getElementById("design");
+         var curr_width = des.style.width;
+         var curr_height = des.style.height;
+
+         canv.style.setAttribute('width', curr_width);
+         canv.style.setAttribute('height', curr_height);
+         /*----------------*/
+
+
     </script>
             
     </body>

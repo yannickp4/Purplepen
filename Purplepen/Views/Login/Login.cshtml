@@ -5,8 +5,12 @@
 <link href="~/Content/css/normalize.css" rel="stylesheet" />
 <link href="~/Content/css/screen.css" rel="stylesheet" />
 
-@if (ViewBag.status != "loggedIn")
+@if( ViewBag.blacklist == "Blocked"){
+    <h2>Banned</h2>
+}
+else
 {
+
 <div id="fb-root"></div>
 <script>
     window.fbAsyncInit = function () {
@@ -19,6 +23,7 @@
 
         FB.Event.subscribe('auth.authResponseChange', function (response) {
             if (response.status === 'connected') {
+
                 // the user is logged in and has authenticated your
                 // app, and response.authResponse supplies
                 // the user's ID, a valid access token, a signed
@@ -42,6 +47,7 @@
                 document.body.appendChild(form);
                 form.submit(accessToken);
 
+
             } else if (response.status === 'not_authorized') {
                 // the user is logged in to Facebook, 
                 // but has not authenticated your app
@@ -64,8 +70,4 @@
     <div>
         <div class="fb-login-button" data-show-faces="true" data-width="400" data-max-rows="1"></div>
     </div>
-}
-else
-{
-   <h2>LoggedIn</h2>
 }

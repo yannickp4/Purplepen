@@ -2,22 +2,83 @@
     ViewBag.Title = "Admin";
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head><title>Admin</title>
-    <link href="~/Content/css/screen.css" rel="stylesheet" />
+<head>
+    <title>Admin</title>
+    <link href="~/Content/css/normalize.css" rel="stylesheet" />
+
+    <link href="~/Content/css/upload.css" rel="stylesheet" />
 </head>
-<body> 
-    <uc1:navigation runat="server" id="Navigation" />
-    <div id="usersList">
-        <select name="FavWebSite" size="5">
-            <option value="user">Jean</option>
-            <option value="user">Jan</option>
-            <option value="user">John</option>
-            <option value="user">Han</option>
-            <option value="user">Bruce Lee</option>
-</select>
-    </div>
-    <form>
-        <input type="button" value="kick" name="kick" id="kick" />
-    </form>
+<body>
+    @if (ViewBag.allow == "noADMIN")
+    { 
+        <h2>Not Allowed</h2>
+    }
+    else{
+     @RenderPage("~/Views/Navigation/Navigation.cshtml")
+    <div id="wrapper">
+        <h2>Administrator</h2>
+   
+        <div class="form">
+            <form method="post" action="@Url.Action("Kick", "Admin")">
+               
+                    <h3>Kick</h3>
+                    <select id="Users" name="Users" size="5">
+                        @foreach (var item in ViewBag.allusers)
+                        {          
+                            <option value="@item.ID">@item.Name</option>        
+                        }
+                    </select>
+              <br />
+
+                <input type="submit" value="Kick" name="Kick" class="submit" />
+            </form>
+        </div>       
+
+        <div class="form">
+            <form method="post" action="@Url.Action("UnKick", "Admin")">
+               
+                    <h3>Un-kick</h3>
+                    <select name="Users" size="5">
+                        @foreach (var item in ViewBag.kicked)
+                        {          
+                            <option value="@item.ID">@item.Name</option>        
+                        }
+                    </select>
+               <br />
+                <input type="submit" value="Allow" name="Allow" class="submit" />
+            </form>
+        </div>
+ 
+        <div class="form">
+            <form method="post" action="@Url.Action("Promote", "Admin")">
+                
+                    <h3>Promote</h3>
+                    <select name="Users" size="5">
+                        @foreach (var item in ViewBag.allusers)
+                        {          
+                            <option value="@item.ID">@item.Name</option>        
+                        }
+                    </select>
+               
+                <br />
+                <input type="submit" value="Promote" name="Allow" class="submit" />
+            </form>
+        </div>
+    <div class="form">
+            <form method="post" action="@Url.Action("Demote", "Admin")">
+                
+                    <h3>Promote</h3>
+                    <select name="Users" size="5">
+                        @foreach (var item in ViewBag.admin)
+                        {          
+                            <option value="@item.ID">@item.Name</option>        
+                        }
+                    </select>
+               
+                <br />
+                <input type="submit" value="Promote" name="Allow" class="submit" />
+            </form>
+        </div>
+</div>}
 </body>
 </html>

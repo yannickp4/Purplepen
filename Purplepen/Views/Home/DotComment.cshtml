@@ -7,12 +7,16 @@
 <html>
 
 <body>
-    <form id="dotForm" name="dotForm" method="post">
-        <input id="dotX" name="dotX" type="text" required />
-        <input id="dotY" name="dotY" type="text" required  />
-        <input id="commentText" name="commentText" type="text" required />
-        <input id="submitDot" name="submitDot" type="submit" value="Send" />
-    </form>
+    @foreach (var item in @ViewBag.current)
+    {
+        <form id="dotForm" name="dotForm" method="post">
+            <input id="dotX" name="dotX" type="text" required />
+            <input id="dotY" name="dotY" type="text" required />
+            <input id="commentText" name="commentText" type="text" required />
+            <input name="designID" value="@item.versionID" class="hide" id="curID" />
+            <input id="submitDot" name="submitDot" type="submit" class="submitComment" value="Send" />
+        </form>
+    }
 </body>
 </html>
 

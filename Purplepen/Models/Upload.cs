@@ -53,7 +53,7 @@ namespace Purplepen.Models
             dc.SubmitChanges();
         }
 
-        public List<project> allProjects(int user_id)
+        public List<project> allProjects(Int64 user_id)
         {
             var result = (from p in dc.projects where p.user_id == user_id select p).ToList();
             return result;
@@ -130,7 +130,7 @@ namespace Purplepen.Models
         }
         
 
-        public List<ownproject> allOwnProjects(int user_id)
+        public List<ownproject> allOwnProjects(Int64 user_id)
         {
             List<ownproject> realresult = new List<ownproject>();
             int blap = 0;

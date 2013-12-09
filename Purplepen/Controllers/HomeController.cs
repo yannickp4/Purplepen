@@ -53,7 +53,7 @@ namespace Purplepen.Controllers
                 }
                 else if (plusMin == "min")
                 {
-                        comm.updateScoreMin(ID);
+                    comm.updateScoreMin(ID);
                 }
             }
             else
@@ -61,7 +61,6 @@ namespace Purplepen.Controllers
                 c.description = form["commentText"];
                 c.upload_id = Convert.ToInt32(form["designID"]); //aanpassen
                 c.user_id = Convert.ToInt64(Session["fbID"].ToString()); //aanpassen
-                c.title = "general"; //aanpassen
                 c.score = 0; //aanpassen
                 c.datum = DateTime.Now;
                 c.category = 0;
@@ -72,21 +71,23 @@ namespace Purplepen.Controllers
 
                 if (string.IsNullOrEmpty(form["dotY"]))
                 {
+                    c.title = "general";
                     c.dot_id = 0;
                     comm.placeComment(c);
                 }
                 else
                 {
+                    c.title = "dot";
                     comm.placeComment(c);
                     comm.placeDot(d);
                 }
             }
-          
+
 
             return RedirectToAction("Index");
         }
 
-        
+
         public ActionResult Flag(int ID)
         {
             Current c = new Current();
@@ -97,12 +98,13 @@ namespace Purplepen.Controllers
 
         public ActionResult Index()
         {
-             Current cur = new Current();
-             ViewBag.current = cur.getCurrentDesign();
+            Current cur = new Current();
+            ViewBag.current = cur.getCurrentDesign();
 
             Comment comm = new Comment();
             int ID = cur.getCurrentID();
             ViewBag.allcomments = comm.allComments(ID);
+            ViewBag.allcommentsGeneral = comm.allCommentsGeneral(ID);
             ViewBag.alldots = comm.allDots(ID);
             return View();
 

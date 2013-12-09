@@ -47,6 +47,7 @@ namespace Purplepen.Models
                 image.project_id = Convert.ToInt32(projectid);
             }
             DateTime blap = DateTime.Parse("1/1/2008 8:30:52");
+            image.flag = 0;
             image.beamer = blap;
             image.viewed = 0;
             dc.uploadversions.InsertOnSubmit(image);
@@ -112,19 +113,20 @@ namespace Purplepen.Models
                 if (w < 290) { marginleft = (290 - w) / 2; }
 
                 if (k > 3) { top = realresult[k - 4].imgHeight + realresult[k - 4].top + 5; }
+                left += 295;
 
+                double doublek = k;
+                double blapke = doublek / 4 - (Math.Floor(doublek / 4));
+                if (blapke == 0)
+                {
+                    left = 0;
+                }
                 realresult[k].imgWidth = Convert.ToInt32(w);
                 realresult[k].imgHeight = Convert.ToInt32(h);
                 realresult[k].marginleft = Convert.ToInt32(marginleft);
                 realresult[k].left = Convert.ToInt32(left);
                 realresult[k].top = Convert.ToInt32(top);
-                left += 295;
-                double doublek = k;
-                double blapke = doublek / 3;
-                if (blapke == 1)
-                {
-                    left = 0;
-                }
+
 
             } return realresult;
         }

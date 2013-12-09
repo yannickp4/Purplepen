@@ -46,7 +46,9 @@ namespace Purplepen.Models
                 var projectid = (from p in dc.projects where p.user_id == project.user_id && p.name == project.name select p.project_id).Single();
                 image.project_id = Convert.ToInt32(projectid);
             }
-
+            DateTime blap = DateTime.Parse("1/1/2008 8:30:52");
+            image.beamer = blap;
+            image.viewed = 0;
             dc.uploadversions.InsertOnSubmit(image);
             dc.SubmitChanges();
         }

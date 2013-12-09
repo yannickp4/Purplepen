@@ -15,7 +15,8 @@ namespace Purplepen.Controllers
         public ActionResult Portfolio()
         {
             Upload projects = new Upload();
-            ViewBag.projects = projects.allOwnProjects(65465416);
+            int session_id = Convert.ToInt32(Session["fbID"]);
+            ViewBag.projects = projects.allOwnProjects(session_id);
             return View();
         }
         public ActionResult deleteProject(int projectid) {

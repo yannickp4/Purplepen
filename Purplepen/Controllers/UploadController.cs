@@ -15,7 +15,7 @@ namespace Purplepen.Controllers
         public ActionResult Upload()
         {
             Upload u = new Upload();
-            ViewBag.allProjects = u.allProjects(65465416);//session id
+            ViewBag.allProjects = u.allProjects(Session["fbID"]);//session id
             return View();
         }
 
@@ -51,7 +51,7 @@ namespace Purplepen.Controllers
                     //save into database
                     project p = new project();
                     uploadversion u = new uploadversion();
-                    p.user_id = 65465416; //Session["userId"]
+                    p.user_id = Convert.ToInt32(Session["fbID"]);
                     var blap = form["project_id"];
                     if (form["project_id"] != null)
                     {

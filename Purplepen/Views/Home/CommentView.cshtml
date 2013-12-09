@@ -5,16 +5,63 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+    <title>dotcom</title>
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
 
+        function activateTab(pageId) {
+            var tabCtrl = document.getElementById('tabCtrl');
+            var pageToActivate = document.getElementById(pageId);
+            for (var i = 0; i < tabCtrl.childNodes.length; i++) {
+                var node = tabCtrl.childNodes[i];
+                if (node.nodeType == 1) { /* Element */
+                    node.style.display = (node == pageToActivate) ? 'block' : 'none';
+                }
+            }
+        }
+
+
+
+    </script>
+</head>
 <body>
-    @foreach (var item in ViewBag.allcomments)
-    {
-        <div id="commentList">
-            <div class="commentItem">
-                <h4>@item.naam</h4>
-                <p>@item.description</p>
-            </div>
+
+
+    <ul>
+        <li>
+            <a href="javascript:activateTab('page1')">General comments</a>
+        </li>
+        <li>
+            <a href="javascript:activateTab('page2')">Specific comments</a>
+        </li>
+    </ul>
+    <div id="tabCtrl">
+        <div id="page1" style="display: block;">
+            @foreach (var item in ViewBag.allcommentsGeneral)
+            {
+                <div id="commentList">
+                    <div class="commentItem">
+                        <h4>@item.naam</h4>
+                        <p>@item.description</p>
+                    </div>
+                </div>
+            }
         </div>
-    }
+        <div id="page2" style="display: none;">
+            @foreach (var item in ViewBag.alldots)
+            {
+                <div id="commentList">
+                    <div class="commentItem">
+                        <h4>@item.naam</h4>
+                        <p>@item.description</p>
+                        <p>x: @item.X  y: @item.Y</p>
+                        <p>score: @item.score</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
 </body>
 </html>

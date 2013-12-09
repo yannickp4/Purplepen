@@ -40,7 +40,23 @@ namespace Purplepen.Models
         {
             // var result = (from c in dc.comments select c).ToList();
             var result = (from c in dc.comments
-                          join u in dc.users on c.user_id equals u.fb_id where c.upload_id == ID
+                          join u in dc.users on c.user_id equals u.fb_id
+                          where c.upload_id == ID
+                          select new commentName
+                          {
+                              naam = u.name,
+                              description = c.description
+                          }).ToList();
+            return result;
+        }
+
+        public List<commentName> allCommentsGeneral(int ID)
+        {
+            // var result = (from c in dc.comments select c).ToList();
+            var result = (from c in dc.comments
+                          join u in dc.users on c.user_id equals u.fb_id
+                          where c.upload_id == ID
+                          where c.title == "general"
                           select new commentName
                           {
                               naam = u.name,
@@ -64,7 +80,9 @@ namespace Purplepen.Models
         {
             var result = (from d in dc.dots
                           join c in dc.comments on d.dot_id equals c.dot_id
-                          join u in dc.users on c.user_id equals u.fb_id where c.upload_id == ID where c.score >= -5
+                          join u in dc.users on c.user_id equals u.fb_id
+                          where c.upload_id == ID
+                          where c.score >= -5
                           select new dotXY
                           {
                               ID = d.dot_id,
@@ -80,12 +98,12 @@ namespace Purplepen.Models
 
         public void updateScore(int id)
         {
-           var up = (from c in dc.comments 
-                     join d in dc.dots on c.dot_id equals d.dot_id
-                     where d.dot_id == id
-                     select c).First();
-           up.score += 1;
-           dc.SubmitChanges();
+            var up = (from c in dc.comments
+                      join d in dc.dots on c.dot_id equals d.dot_id
+                      where d.dot_id == id
+                      select c).First();
+            up.score += 1;
+            dc.SubmitChanges();
         }
 
         public void updateScoreMin(int id)
@@ -102,8 +120,8 @@ namespace Purplepen.Models
         //{
         //    // var result = (from c in dc.comments select c).ToList();
         //    var result = (from d in dc.dots select last d).ToList();
-                          
-                         
+
+
         //    return result;
         //}
 

@@ -46,18 +46,32 @@
 
                     @foreach (var item2 in ViewBag.alldots)
                     {
-                        <div id="dotDiv@(item2.ID)" class="dotDiv" style="height: 100px; width:200px; display:block; position:absolute; top:@(item2.Y - 15)px; left:@(item2.X - 15)px; background-color: white; border-radius: 5px; visibility: hidden;">
-                            <h4>@item2.naam</h4>
-                            <p>@item2.description</p>
-                            <!----<form id="plusMin" name="plusMin" method="post">
-                <input id="plus" name="plus" type="submit" value="Send" />
-                <input id="min" name="min" type="submit" value="Send" />
-            </form>-->
+                        <div id="dot@(item2.ID)" onclick="showDotID(@item2.ID)" class="dotstyle" style="height: @((item2.score * 2) + 20)px; width: @((item2.score *2) + 20)px; display:block; position:absolute; top:@(item2.Y - 10 - (item2.score))px; left:@(item2.X - 10 - (item2.score))px; background-color: red; border-radius: @(10 + item2.score)px;">
                         </div>
-                        <div id="dot@(item2.ID)" onclick="showDotID(@item2.ID)" class="dotstyle" style="height: 20px; width:20px; display:block; position:absolute; top:@(item2.Y - 10)px; left:@(item2.X - 10)px; background-color: red; border-radius: 10px;">
-                        </div>
+                        
+    
 
                     }
+
+                    @foreach (var item2 in ViewBag.alldots)
+{
+    <div id="dotDiv@(item2.ID)" class="dotDiv" style="height: 200px; width:400px; display:block; position:absolute; top:@(item2.Y - 15)px; left:@(item2.X - 15)px; background-color: white; border-radius: 5px; visibility: hidden;">
+        <button onclick="hideDotID(@item2.ID)">x</button>
+        <h4>@item2.naam</h4>
+        <p>@item2.description</p>
+        <p>Score: @item2.score</p>
+
+        <form method="post">
+
+            <button name="button" value="plus,@(item2.ID),@(item2.score)">plus</button>
+            <button name="button" value="min,@(item2.ID),@(item2.score)">min</button>
+
+        </form>
+
+        <!-- <a class="action" href="@Url.Action("Plus", "HomeController", new { commentId = @item2.commentId })">plus</a>
+         <a class="action" href="@Url.Action("min", "HomeController", new { commentId = @item2.commentId })">min</a> -->
+    </div>
+}
 
                 </div>
             }
@@ -82,7 +96,7 @@
                 <form method="post">       
                     <input id="commentText" name="commentText" type="text" required />
                     <input class="hide" id="designID" name="designID" value="@item.versionID" />
-                    <input class="submitComment" type="submit" value="Send" />
+                    <input class="submitComment" type="submit" value="Send" name="button" />
                 </form>
                       }
                     <div class="cTab" id="specificTabs"><a>Specific</a></div>
@@ -92,7 +106,6 @@
             </div>
             </div>
             
-        </div>
         <script type="text/javascript" src="~/Scripts/dot.js"></script>
    
      <script type="text/javascript">
@@ -107,15 +120,21 @@
                  for (var i = 0; i < elems.length; i++) {
                      elems[i].style.visibility = 'hidden';
                  }
-                 if (vis == 0) {
+                 //if (vis == 0) {
                  document.getElementById(idDiv).style.visibility = "visible";
-                 vis = 1;
-             }
-             else {
-                     document.getElementById(idDiv).style.visibility = "hidden";
-                     vis = 0;
-             }
+                 //vis = 1;
+             //}
+             //else {
+             //        document.getElementById(idDiv).style.visibility = "hidden";
+             //        vis = 0;
+             //}
              
+         }
+
+         function hideDotID(id)
+         {
+             var idDiv = "dotDiv" + id;
+             document.getElementById(idDiv).style.visibility = "hidden";
          }
 
          function removeDots() {

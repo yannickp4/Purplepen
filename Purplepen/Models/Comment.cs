@@ -54,24 +54,48 @@ namespace Purplepen.Models
             public int ID { get; set; }
             public int X { get; set; }
             public int Y { get; set; }
+            public int commentId { get; set; }
             public String description { get; set; }
             public String naam { get; set; }
+            public int score { get; set; }
         }
 
         public List<dotXY> allDots(int ID)
         {
             var result = (from d in dc.dots
                           join c in dc.comments on d.dot_id equals c.dot_id
-                          join u in dc.users on c.user_id equals u.fb_id where c.upload_id == ID
+                          join u in dc.users on c.user_id equals u.fb_id where c.upload_id == ID where c.score >= -5
                           select new dotXY
                           {
                               ID = d.dot_id,
                               X = d.dot_x,
                               Y = d.dot_y,
                               description = c.description,
-                              naam = u.name
+                              naam = u.name,
+                              commentId = c.category,
+                              score = c.score
                           }).ToList();
             return result;
+        }
+
+        public void updateScore(int id)
+        {
+           var up = (from c in dc.comments 
+                     join d in dc.dots on c.dot_id equals d.dot_id
+                     where d.dot_id == id
+                     select c).First();
+           up.score += 1;
+           dc.SubmitChanges();
+        }
+
+        public void updateScoreMin(int id)
+        {
+            var up = (from c in dc.comments
+                      join d in dc.dots on c.dot_id equals d.dot_id
+                      where d.dot_id == id
+                      select c).First();
+            up.score -= 1;
+            dc.SubmitChanges();
         }
 
         //public List<dot>allDots()

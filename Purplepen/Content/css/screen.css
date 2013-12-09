@@ -3,6 +3,13 @@
     src: url(../fonts/CaneletterScriptThin.otf);
 }
 
+html {
+    background: url(../img/bgGYM.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
 body {
     font-family: Arial, helvetica;
@@ -16,7 +23,7 @@ body {
 
 h1 {
     text-align: center;
-    color: purple;
+    color: white;
     font-family: 'Handwrite';
     font-size: 4em;
     font-weight: 100 !important;
@@ -54,15 +61,30 @@ nav {
 
 /*----------------------INDEX-------------------------------*/
 
-#design {
-    max-width: 70%;
-    max-height: 80%;
+#design img{
+    max-width: 700px;
+    max-height: 700px;
+  
+   
 }
+
+
 
 #uploadedDesign {
     background-color: #9BE3FF;
     display: block;
+    overflow:visible;
+   width:700px;
+  height:700px;
     float: left;
+    border-radius: 4px;
+    padding:5px;
+}
+
+#designDescription {
+
+    position:absolute;
+    bottom:0px;
 }
 
 #uploadTabs {
@@ -79,17 +101,33 @@ nav {
     float: left;
 }
 
+#designtop {
+    display:block;
+    
+}
+
+h5 {
+    display:inline-block;
+    font-size:1.2em;
+}
+
+.bar {
+    height:25px;
+    display:block;
+    width:100%;
+}
 
 .flatBtn {
+    float:right;
     color: white;
     border-radius: 4px;
     border: 1px solid #415b76;
     background-color: #415b76;
-    display: inline-block;
     margin-left: 1em;
     padding: 5px;
     font-size: 0.75em;
     text-decoration:none;
+    margin-top:-2.2em;
 }
 
 #comments {
@@ -102,14 +140,12 @@ nav {
 }
 
 #commentTabs {
-   
+   display:block;
+   width:100%;
 }
 
 .cTab {
-    
-    display: block;
-    float: left;
-    vertical-align:middle;
+     vertical-align:middle;
      margin-right:1px;
      padding-left:0.5em;
      padding-right:0.5em;
@@ -118,7 +154,7 @@ nav {
       border: solid 1px #edeaeb;
      background-color:#f2ab9e;
     display: block;
-    float: left;
+ 
     height: 20px;
    padding-left:0.75em;
    padding-right:0.75em;
@@ -127,8 +163,13 @@ nav {
 
 #commentList {
     display: block;
-    float: left;
-    width:350px;
+    width:100%;
+}
+
+#gComment {
+    height:500px;
+    width:100%;
+    overflow:auto;
 }
 
 .commentItem {
@@ -156,6 +197,10 @@ nav {
     
 }
 
+.cGenral {
+    width:100%;
+    display:block;
+}
 
 
 /*----------------------HISTORY----------------------------*/
@@ -231,14 +276,8 @@ h3 {
 /*zie history*/
 
 /*----------------------UPLOAD----------------------------------*/
-fieldset {
-    border-color: black;
-}
 
-form {
-    display: block;
-    background-color: whitesmoke !important;
-}
+
 
 /*----------------------LOGIN-----------------------------------*/
 

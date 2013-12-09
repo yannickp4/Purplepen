@@ -17,10 +17,12 @@
     <div id="wrapper">
         <div id="uploadedDesign">
            
-           
+     
             @foreach (var item in @ViewBag.current)
             {
-               
+                
+                <h5>@item.title</h5>
+                
                 if (@ViewBag.flag == "flag")
                 { 
                     <div class="message">This design has been flagged</div>
@@ -28,18 +30,19 @@
                 else
                 {
                 <form method="delete">
-                    <input style="visibility:hidden;" name="ID" value="@item.versionID" />
+                    <input class="hide" name="ID" value="@item.versionID" />
                      <input type="button" class="flatBtn" value="Show dots" onclick="showDots()" />
             <input type="button" class="flatBtn" value="Hide dots" onclick="removeDots()" />
                     <a class="flatBtn" href="@Url.Action("Flag", "Home",  new { ID=@item.versionID})">X Flag</a>
                  
                 </form>
+                
                 }
                 
             
-                <h5>@item.title</h5>
+               
 
-                <div id="design" style="position:absolute; display: block;">
+                <div id="design" style="position:relative; display: block;">
                     <img id="imgDesign" src="~/uploads/@item.url" style="position:absolute; display: block;" />
                     <canvas id="placeDots" width="500" height="500"  style="position:absolute; display: block;"></canvas>
                     <p id="designDescription">@item.description</p>
@@ -61,7 +64,7 @@
         <p>@item2.description</p>
         <p>Score: @item2.score</p>
 
-        <form method="post">
+        <form class="cGenral" method="post">
 
             <button name="button" value="plus,@(item2.ID),@(item2.score)">plus</button>
             <button name="button" value="min,@(item2.ID),@(item2.score)">min</button>
@@ -78,7 +81,7 @@
 
             
             </div>
-            </div>
+            
             <div id="comments">
                 <div id="commentTabs">
                     <div class="cTab" id="generalTab"><a>General</a></div>
@@ -86,7 +89,7 @@
                 </div>
 
 
-                <div id="PartialView">
+                <div id="gComment">
                     @Html.Partial("CommentView")
 
                 </div>
@@ -105,34 +108,32 @@
 
             </div>
             </div>
-            
+            </div>
         <script type="text/javascript" src="~/Scripts/dot.js"></script>
    
      <script type="text/javascript">
          var vis = 0;
 
-         function showDotID(id)
-         {
-             
-                 var idDiv = "dotDiv" + id;
-                 //alert(idDiv);
-                 var elems = document.getElementsByClassName('dotDiv');
-                 for (var i = 0; i < elems.length; i++) {
-                     elems[i].style.visibility = 'hidden';
-                 }
-                 //if (vis == 0) {
-                 document.getElementById(idDiv).style.visibility = "visible";
-                 //vis = 1;
+         function showDotID(id) {
+
+             var idDiv = "dotDiv" + id;
+             //alert(idDiv);
+             var elems = document.getElementsByClassName('dotDiv');
+             for (var i = 0; i < elems.length; i++) {
+                 elems[i].style.visibility = 'hidden';
+             }
+             //if (vis == 0) {
+             document.getElementById(idDiv).style.visibility = "visible";
+             //vis = 1;
              //}
              //else {
              //        document.getElementById(idDiv).style.visibility = "hidden";
              //        vis = 0;
              //}
-             
+
          }
 
-         function hideDotID(id)
-         {
+         function hideDotID(id) {
              var idDiv = "dotDiv" + id;
              document.getElementById(idDiv).style.visibility = "hidden";
          }

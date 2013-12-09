@@ -9,7 +9,7 @@
     <script src="~/Content/js/jquery-1.10.2.min.js"></script>
 </head>
 <body>
-    <div id="progress" style="width: 0px; height: 5px; background-color: white;"></div>
+    <div id="progress" style="width: 0px; height: 5px; background-color: white; position:absolute; bottom:0px;"></div>
     <script type="text/javascript">
         var myVar = setInterval(function () { myTimer() }, 20);
         var procent = 0;
@@ -42,47 +42,41 @@
         }
 
     </script>
+   
     <div id="display">
+         <div id="wrapper">
         @foreach (var item in @ViewBag.current)
         {
-                
+               <div id="uploadedDesign">   
             
             <h5>@item.title</h5>
 
-            <div id="design">
+            <div id="design" style="position:relative; display: block;">
                 <img src="~/uploads/@item.url" />
-                <canvas id="placeDots" width="500" height="500"></canvas>
                 <p id="designDescription">@item.description</p>
 
             </div>
+                   </div>
         }
 
          <div id="comments">
                 <div id="commentTabs">
                     <div class="cTab" id="generalTab"><a>General</a></div>
-                    <div class="cTab" id="specificTabs"><a>Specific</a></div>
                 </div>
 
 
-                <div id="PartialView">
+                <div id="gComment">
                     @Html.Partial("../Home/CommentView")
 
                 </div>
 
                       @foreach (var item in @ViewBag.current)
                       {
-                <form method="post">       
-                    <input id="commentText" name="commentText" type="text" required />
-                    <input id="designID" name="designID" value="@item.versionID" />
-                    <input id="submitComment" type="submit" value="Send" />
-                </form>
+                
                       }
 
             </div>
-            <div id="PartialView">
-                @Html.Partial("../Home/DotComment")
-
-            </div>
+           
         </div>
     </div>
 </body>

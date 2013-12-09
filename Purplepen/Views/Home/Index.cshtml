@@ -79,7 +79,11 @@
                 </div>
             }
 
-            
+            <div class="cTab" id="specificTabs"><a>Place your dot</a></div>
+            <div id="PartialView">
+                @Html.Partial("DotComment")
+
+            </div>
             </div>
             
             <div id="comments">
@@ -102,11 +106,7 @@
                     <input class="submitComment" type="submit" value="Send" name="button" />
                 </form>
                       }
-                    <div class="cTab" id="specificTabs"><a>Specific</a></div>
-            <div id="PartialView">
-                @Html.Partial("DotComment")
-
-            </div>
+                   
             </div>
             </div>
         <script type="text/javascript" src="~/Scripts/dot.js"></script>
@@ -162,6 +162,8 @@
          function hoverOut(ID) {
              document.getElementById('dot' + ID).style.backgroundColor = "Purple";
          }
+
+
 
          /*Canvas resizen*/
          var canv = document.getElementById("placeDots");

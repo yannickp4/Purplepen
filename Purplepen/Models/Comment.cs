@@ -91,7 +91,7 @@ namespace Purplepen.Models
                               description = c.description,
                               naam = u.name,
                               commentId = c.category,
-                              score = c.score
+                              score = c.score,
                           }).ToList();
             return result;
         }

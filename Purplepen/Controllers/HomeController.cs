@@ -34,6 +34,7 @@ namespace Purplepen.Controllers
             Comment comm = new Comment();
             comment c = new comment();
             dot d = new dot();
+            vote v = new vote();
 
             if (button != "Send")
             {

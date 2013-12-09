@@ -15,7 +15,8 @@ namespace Purplepen.Controllers
         public ActionResult Upload()
         {
             Upload u = new Upload();
-            ViewBag.allProjects = u.allProjects(Session["fbID"]);//session id
+            var blip = Convert.ToInt64(Session["fbID"]);
+            ViewBag.allProjects = u.allProjects(blip);//session id
             return View();
         }
 

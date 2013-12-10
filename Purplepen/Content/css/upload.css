@@ -48,6 +48,7 @@ width:400px;
 }
 
 .form {
+    border-radius:4px;
     float:left;
 background-color: rgba(255,255,255,0.8);
 width:420px;

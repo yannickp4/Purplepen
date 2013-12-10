@@ -156,7 +156,11 @@
     <Content Include="App_Data\dbPurplepen_log.ldf">
       <DependentUpon>dbPurplepen.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\css\portfolio.css" />
+    <Content Include="Content\css\projectdetail.css" />
+    <Content Include="Content\css\reset.css" />
     <Content Include="Content\css\screen.css" />
+    <Content Include="Content\css\upload.css" />
     <Content Include="Content\img\bgGYM.jpg" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

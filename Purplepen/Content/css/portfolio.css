@@ -21,6 +21,7 @@ h1 {
     margin: 0px !important;
     margin-top: 1%;
     width:40%;
+    text-shadow: 0px 0px 8px black;
 }
 
 #navWrapper {
@@ -59,7 +60,7 @@ nav {
 #wrapper {
     display: block;
     margin: 0 auto;
-    width: 90%;
+    width: 60%;
 }
 
 #listDesigns {
@@ -78,9 +79,10 @@ color:white;
 padding:7px;
 font-size:1.2em;
 background-color:purple;
+border-radius:5px;
 }
 
-    .action:hover {color:mediumpurple;}
+    .action:hover {color: #f2ab9e;}
 .project{background-color:rgba(255, 255, 255, 0.8);background-size: contain;
 background-repeat: no-repeat;
 background-position: center;text-decoration:none;color:white;margin:2px;display:block;/*float:left;*/width:290px;max-height:350px;min-height:60px;overflow:hidden;position:absolute;/*position:relative;*/opacity:1;}

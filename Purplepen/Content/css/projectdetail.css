@@ -1,4 +1,4 @@
-﻿html {
+html {
     background: url(../img/bgGYM.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -11,23 +11,51 @@ body {
     height: 100%;
 }
 
+h1 {
+    float:left;
+    text-align: left;
+    color: white;
+    font-family: 'Handwrite';
+    font-size: 4em;
+    font-weight: 100 !important;
+    margin: 0px !important;
+    margin-top: 1%;
+    width:40%;
+}
+
+#navWrapper {
+    width:90%;
+    height:80px;
+     margin: 0px auto !important;
+}
+
 nav {
+    float:left;
     display: block;
-    margin: 1% auto;
-    text-align: center;
+    margin: 0.5% auto;
+    text-align: left;
+    font-size:1.4em;
 }
 
-nav a {
-    color: #FFC45B;
-    font-weight: bold;
-    margin-left: 1em;
-    margin-right: 1em;
-}
+    nav a {
+        color: white;
+        font-weight: bold;
+        margin-left: 1em;
+        margin-right: 1em;
+        width:60%;
+        vertical-align:middle;
+    }
 
-nav a:visited {
-    color: #FFC45B;
-    font-weight: bold;
-}
+        nav a:visited {
+             color: white;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+        
+        color: #f2ab9e;
+        transition-duration: 0.5s;
+        }
 
 #wrapper {
     display: block;
@@ -71,7 +99,7 @@ background-position: center;text-decoration:none;color:white;margin:2px;display:
 
 
 h1 {
-    text-align: center;
+    text-align: left;
     color: white;
     font-family: 'Handwrite';
     font-size: 4em;

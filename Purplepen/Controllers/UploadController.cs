@@ -15,7 +15,7 @@ namespace Purplepen.Controllers
         public ActionResult Upload()
         {
             Upload u = new Upload();
-            var blip = Convert.ToInt64(Session["fbID"]);
+            Int64 blip = Convert.ToInt64(Session["fbID"]);
             ViewBag.allProjects = u.allProjects(blip);//session id
             return View();
         }
@@ -37,7 +37,7 @@ namespace Purplepen.Controllers
                 var fileName = Path.GetFileName(file.FileName);
                 // extract file extension
                 var fileExtension = Path.GetExtension(fileName);
-                if (fileExtension == ".jpg" || fileExtension == ".JPG" || fileExtension == "jpeg" || fileExtension == "JPEG" || fileExtension == ".gif" || fileExtension == ".png")
+                if (fileExtension == ".jpg" || fileExtension == ".JPG" || fileExtension == "jpeg" || fileExtension == "JPEG" || fileExtension == ".gif" || fileExtension == ".GIF"  || fileExtension == ".png" || fileExtension == ".PNG")
                 {
                     //get datetime
                     String now = DateTime.Now.ToString("yyyy");

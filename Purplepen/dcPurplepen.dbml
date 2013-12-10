@@ -9,7 +9,7 @@
       <Column Name="datum" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="project_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="viewed" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="beamer" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="beamer" Type="System.DateTime" DbType="DateTime" CanBeNull="false" />
       <Column Name="flag" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="uploadversion_project" Member="projects" ThisKey="project_id" OtherKey="project_id" Type="project" />
       <Association Name="comment_uploadversion" Member="comment" ThisKey="version_id" OtherKey="upload_id" Type="comment" IsForeignKey="true" />

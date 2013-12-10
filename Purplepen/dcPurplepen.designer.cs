@@ -149,7 +149,7 @@ namespace Purplepen
 		
 		private System.Nullable<int> _viewed;
 		
-		private System.Nullable<System.DateTime> _beamer;
+		private System.DateTime _beamer;
 		
 		private System.Nullable<int> _flag;
 		
@@ -175,7 +175,7 @@ namespace Purplepen
     partial void Onproject_idChanged();
     partial void OnviewedChanging(System.Nullable<int> value);
     partial void OnviewedChanged();
-    partial void OnbeamerChanging(System.Nullable<System.DateTime> value);
+    partial void OnbeamerChanging(System.DateTime value);
     partial void OnbeamerChanged();
     partial void OnflagChanging(System.Nullable<int> value);
     partial void OnflagChanged();
@@ -333,7 +333,7 @@ namespace Purplepen
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_beamer", DbType="DateTime")]
-		public System.Nullable<System.DateTime> beamer
+		public System.DateTime beamer
 		{
 			get
 			{

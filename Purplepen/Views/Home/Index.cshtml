@@ -8,6 +8,7 @@
      <link href="~/Content/css/normalize.css" rel="stylesheet" />
     <link href="~/Content/css/screen.css" rel="stylesheet" />
     <script type="text/javascript" src="http://code.createjs.com/easeljs-0.6.0.min.js"></script>
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="~/Scripts/dot.js"></script>
     
 
@@ -85,7 +86,29 @@
 
 
             <div id="gComment">
-                @Html.Partial("CommentView")
+                <a href="javascript:activateTab('page1')">General comments</a>
+
+                <a href="javascript:activateTab('page2')">Specific comments</a>
+
+                <a href="javascript:activateTab('page3')">All comments</a>
+
+                <div id="tabCtrl">
+                    <div id="page1" style="display: block;">
+                        <div id="pageGen">
+                            @Html.Partial("CommentView1")
+                        </div>
+                    </div>
+                    <div id="page2" style="display: none;">
+                        <div id="pageDot">
+                            @Html.Partial("CommentView2")
+                        </div>
+                    </div>
+                    <div id="page3" style="display: none;">
+                        <div id="pageAll">
+                            @Html.Partial("CommentView3")
+                        </div>
+                    </div>
+                </div>
 
             </div>
             <div class="cTab" id="generalTab"><a>General</a></div>
@@ -203,16 +226,39 @@
 
         function go() {
             //alert('wuut');
-            setInterval(onDropDownChange, 5000);
+            //setInterval(onDropDownChange, 5000);
             setInterval(dotsRefresh, 5000);
-            onDropDownChange();
+            setInterval(onDropDownChange1, 5000);
+            setInterval(onDropDownChange2, 5000);
+            setInterval(onDropDownChange3, 5000);
+            onDropDownChange1();
+            onDropDownChange2();
+            onDropDownChange3();
+            //onDropDownChange();
             dotsRefresh();
             init();
             resize();
 
 
-            function onDropDownChange() {
-                var url = '/Home/CommentView/';
+            //function onDropDownChange() {
+            //    var url = '/Home/CommentView/';
+            //    $.ajax({
+            //        url: url,
+            //        data: {}, //parameters go here in object literal form
+            //        type: 'GET',
+            //        datatype: 'json',
+            //        success: function (data) {
+
+            //            $('#gComment').load(url);
+            //            //alert('shit went aight');
+
+            //        },
+            //        error: function (request) {  }
+            //    });
+            //}
+
+            function onDropDownChange1() {
+                var url = '/Home/CommentView1/';
                 $.ajax({
                     url: url,
                     data: {}, //parameters go here in object literal form
@@ -220,11 +266,45 @@
                     datatype: 'json',
                     success: function (data) {
 
-                        $('#gComment').load(url);
+                        $('#pageGen').load(url);
                         //alert('shit went aight');
 
                     },
                     error: function (request) {  }
+                });
+            }
+
+            function onDropDownChange2() {
+                var url = '/Home/CommentView2/';
+                $.ajax({
+                    url: url,
+                    data: {}, //parameters go here in object literal form
+                    type: 'GET',
+                    datatype: 'json',
+                    success: function (data) {
+
+                        $('#pageDot').load(url);
+                       // alert('shit went aight2');
+
+                    },
+                    error: function (request) { }
+                });
+            }
+
+            function onDropDownChange3() {
+                var url = '/Home/CommentView3/';
+                $.ajax({
+                    url: url,
+                    data: {}, //parameters go here in object literal form
+                    type: 'GET',
+                    datatype: 'json',
+                    success: function (data) {
+
+                        $('#pageAll').load(url);
+                       // alert('shit went aight3');
+
+                    },
+                    error: function (request) { }
                 });
             }
 
@@ -243,6 +323,17 @@
                     },
                     error: function (request) {  }
                 });
+            }
+        }
+
+        function activateTab(pageId) {
+            var tabCtrl = document.getElementById('tabCtrl');
+            var pageToActivate = document.getElementById(pageId);
+            for (var i = 0; i < tabCtrl.childNodes.length; i++) {
+                var node = tabCtrl.childNodes[i];
+                if (node.nodeType == 1) { /* Element */
+                    node.style.display = (node == pageToActivate) ? 'block' : 'none';
+                }
             }
         }
 

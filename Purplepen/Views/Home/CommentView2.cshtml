@@ -1,0 +1,23 @@
+﻿@model Purplepen.Models.Comment
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+
+    @foreach (var item in ViewBag.alldots)
+    {
+        <div id="commentList">
+            <div class="commentItem">
+                <h4>@item.naam</h4>
+                <p>@item.description</p>
+                <p>x: @item.X  y: @item.Y</p>
+                <p>score: @item.score</p>
+            </div>
+        </div>
+    }
+
+</body>
+</html>

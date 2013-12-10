@@ -124,6 +124,48 @@ namespace Purplepen.Controllers
 
         }
 
+        public ActionResult CommentView1()
+        {
+            Current cur = new Current();
+            ViewBag.current = cur.getCurrentDesign();
+
+            Comment comm = new Comment();
+            int ID = cur.getCurrentID();
+            ViewBag.allcomments = comm.allComments(ID);
+            ViewBag.allcommentsGeneral = comm.allCommentsGeneral(ID);
+            ViewBag.alldots = comm.allDots(ID);
+            return View();
+
+        }
+
+        public ActionResult CommentView2()
+        {
+            Current cur = new Current();
+            ViewBag.current = cur.getCurrentDesign();
+
+            Comment comm = new Comment();
+            int ID = cur.getCurrentID();
+            ViewBag.allcomments = comm.allComments(ID);
+            ViewBag.allcommentsGeneral = comm.allCommentsGeneral(ID);
+            ViewBag.alldots = comm.allDots(ID);
+            return View();
+
+        }
+
+        public ActionResult CommentView3()
+        {
+            Current cur = new Current();
+            ViewBag.current = cur.getCurrentDesign();
+
+            Comment comm = new Comment();
+            int ID = cur.getCurrentID();
+            ViewBag.allcomments = comm.allComments(ID);
+            ViewBag.allcommentsGeneral = comm.allCommentsGeneral(ID);
+            ViewBag.alldots = comm.allDots(ID);
+            return View();
+
+        }
+
         public ActionResult Dots()
         {
             Current cur = new Current();

@@ -223,6 +223,9 @@
     </None>
     <Content Include="Views\Beamer\BeamerComments.cshtml" />
     <Content Include="Views\Home\Dots.cshtml" />
+    <Content Include="Views\Home\CommentView2.cshtml" />
+    <Content Include="Views\Home\CommentView1.cshtml" />
+    <Content Include="Views\Home\CommentView3.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

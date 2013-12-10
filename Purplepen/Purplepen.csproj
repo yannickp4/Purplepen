@@ -220,6 +220,7 @@
     <None Include="dcPurplepen.dbml.layout">
       <DependentUpon>dcPurplepen.dbml</DependentUpon>
     </None>
+    <Content Include="Views\Beamer\BeamerComments.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

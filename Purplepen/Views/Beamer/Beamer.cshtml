@@ -53,7 +53,7 @@
 
             <div id="design" style="position:relative; display: block;">
                 <img src="~/uploads/@item.url" />
-                <p id="designDescription">@item.description</p>
+                <p id="designDescription" style="position:relative; bottom:0px;">@item.description</p>
 
             </div>
                    </div>
@@ -61,12 +61,12 @@
 
          <div id="comments">
                 <div id="commentTabs">
-                    <div class="cTab" id="generalTab"><a>General</a></div>
+                    <div class="cTab" id="generalTab"><a>Comments</a></div>
                 </div>
 
 
                 <div id="gComment">
-                    @Html.Partial("../Home/CommentView")
+                    @Html.Partial("../Beamer/BeamerComments")
 
                 </div>
 

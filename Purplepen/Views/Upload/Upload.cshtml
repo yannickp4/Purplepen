@@ -13,11 +13,11 @@
      @RenderPage("~/Views/Navigation/Navigation.cshtml")
  <div id="wrapper">
      <div class="form">
-         <h3>New design project</h3>
+         <h3>New project</h3>
       @using (Html.BeginForm("ImageUpload", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" })){
     <form method="post">
             <label class="label">Title</label><input type="text" name="txtTitle" id="txtTitle" class="input" required />
-            <label class="label">Description</label><textarea name="txtDescription" id="txtDescription" class="textarea" rows="8" required></textarea>
+            <label class="label">Project description</label><textarea name="txtDescription" id="txtDescription" class="textarea" rows="8" required></textarea>
         <input type="file" name="file" />
         <input type="submit" value="Upload" class="submit" />
     </form>
@@ -34,7 +34,7 @@
     <option value=@item.project_id>@item.name</option>
 }
             </select>
-            <label class="label">Description</label><textarea name="txtDescription" rows="8" class="textarea" required></textarea>
+            <label class="label">Update description</label><textarea name="txtDescription" rows="8" class="textarea" required></textarea>
         <input type="file" name="file" />
         <input type="submit" value="Upload" class="submit"/>
     </form>

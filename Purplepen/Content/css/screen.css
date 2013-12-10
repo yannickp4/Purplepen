@@ -31,6 +31,7 @@ h1 {
     margin: 0px !important;
     margin-top: 1%;
     width:40%;
+    text-shadow: 0px 0px 8px black;
 }
 
 h2 {
@@ -324,7 +325,7 @@ h3 {
 
 .dotDiv {
     padding:5px !important;
-    background-color:darkgrey !important;
+    background-color:rgba(0,0,0,0.75) !important;
     color:whitesmoke;
     
 }

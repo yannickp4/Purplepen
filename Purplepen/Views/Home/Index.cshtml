@@ -74,11 +74,7 @@
                 </div>
             }
 
-            <div class="cTab" id="specificTabs"><a>Place your dot</a></div>
-            <div id="PartialView">
-                @Html.Partial("DotComment")
-
-            </div>
+           
         </div>
 
         <div id="comments">
@@ -101,7 +97,12 @@
                     <input class="submitComment" type="submit" value="Send" name="button" />
                 </form>
             }
+             <div class="cTab" id="specificTabs"><a>Place your dot</a></div>
+            <div id="PartialView">
+                @Html.Partial("DotComment")
 
+            </div>
+           
         </div>
     </div>
     <script type="text/javascript" src="~/Scripts/dot.js"></script>
@@ -159,27 +160,46 @@
         }
 
 
+        function resize() {
+            /*Canvas resizen*/
+            var canv = document.getElementById("placeDots");
+            var des = document.getElementById("imgDesign");
+            var curr_width = des.width;
+            var curr_height = des.height;
 
-        /*Canvas resizen*/
-        var canv = document.getElementById("placeDots");
-        var des = document.getElementById("imgDesign");
-        var curr_width = des.width;
-        var curr_height = des.height;
+            var verhouding = curr_width / curr_height;
 
-        var verhouding = curr_width / curr_height;
+            var h = 0;
+            var w = 0;
 
-        if (curr_height > 700) {
-            curr_height = 700 / verhouding;
+            if (curr_height > 700) {
+                h = 700;
+                w = curr_width / curr_height * 700;
+
+                if (curr_width > 700) {
+                    w = 700;
+                    h = curr_height / curr_width * 700;
+                }
+            }
+
+            else if (curr_width > 700) {
+                w = 700;
+                h = curr_height / curr_width * 700;
+
+                if (curr_height > 700) {
+                    h = 700;
+                    w = curr_width / curr_height * 700;
+                }
+            }
+            else if (curr_height <= 700 && curr_width <= 700) {
+                h = curr_height;
+                w = curr_width;
+            }
+
+            canv.width = w;
+            canv.height = h;
+            /*----------------*/
         }
-
-        if (curr_width > 700) {
-            curr_width = 700;
-        }
-
-        canv.width = curr_width;
-        canv.height = curr_height;
-        /*----------------*/
-
 
         function go() {
             //alert('wuut');
@@ -188,6 +208,7 @@
             onDropDownChange();
             dotsRefresh();
             init();
+            resize();
 
 
             function onDropDownChange() {
@@ -203,7 +224,7 @@
                         //alert('shit went aight');
 
                     },
-                    error: function (request) { alert('something bad happened' + request.responseText); }
+                    error: function (request) {  }
                 });
             }
 
@@ -220,7 +241,7 @@
                         //alert('shit went aight');
 
                     },
-                    error: function (request) { alert('something bad happened' + request.responseText); }
+                    error: function (request) {  }
                 });
             }
         }

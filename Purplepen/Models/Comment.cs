@@ -50,6 +50,20 @@ namespace Purplepen.Models
             return result;
         }
 
+        public List<commentName> lastTenComments(int ID)
+        {
+            // var result = (from c in dc.comments select c).ToList();
+            var result = (from c in dc.comments
+                          join u in dc.users on c.user_id equals u.fb_id
+                          where c.upload_id == ID orderby c.comment_id descending
+                          select new commentName
+                          {
+                              naam = u.name,
+                              description = c.description
+                          }).Take(10).ToList();
+            return result;
+        }
+
         public List<commentName> allCommentsGeneral(int ID)
         {
             // var result = (from c in dc.comments select c).ToList();
@@ -65,6 +79,7 @@ namespace Purplepen.Models
                           }).ToList();
             return result;
         }
+
 
         public class dotXY
         {

@@ -1,4 +1,4 @@
-﻿@font-face {
+@font-face {
     font-family: Handwrite;
     src: url(../fonts/CaneletterScriptThin.otf);
 }
@@ -22,6 +22,7 @@ body {
 }
 
 h1 {
+    float:left;
     text-align: left;
     color: white;
     font-family: 'Handwrite';
@@ -29,28 +30,45 @@ h1 {
     font-weight: 100 !important;
     margin: 0px !important;
     margin-top: 1%;
+    width:40%;
 }
 
 h2 {
     color: white;
 }
 
+#navWrapper {
+    width:90%;
+    height:80px;
+     margin: 0px auto !important;
+}
+
 nav {
+    float:left;
     display: block;
-    margin: 1% auto;
-    text-align: center;
+    margin: 0.5% auto;
+    text-align: left;
+    font-size:1.4em;
 }
 
     nav a {
-        color: #FFC45B;
+        color: white;
         font-weight: bold;
         margin-left: 1em;
         margin-right: 1em;
+        width:60%;
+        vertical-align:middle;
     }
 
         nav a:visited {
-            color: #FFC45B;
+             color: white;
             font-weight: bold;
+        }
+
+        nav a:hover {
+        
+        color: #f2ab9e;
+        transition-duration: 0.5s;
         }
 
 #wrapper {
@@ -79,16 +97,17 @@ nav {
     display: block;
     overflow:visible;
    width:700px;
-  height:700px;
+  height:800px;
     float: left;
     border-radius: 5px;
-    padding:5px;
+    padding:14px;
 }
 
 #designDescription {
     color:whitesmoke;
     position:absolute;
     bottom:0px;
+    font-size: 0.80em;
 }
 
 #uploadTabs {
@@ -112,8 +131,9 @@ nav {
 
 h5 {
     display:inline-block;
-    font-size:1.2em;
+    font-size:1.1em;
     color:white;
+    margin-top:0.5em;
 }
 
 .bar {

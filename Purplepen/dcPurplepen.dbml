@@ -45,15 +45,6 @@
       <Association Name="user_ranking" Member="user" ThisKey="rank_id" OtherKey="rank_id" Type="user" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.uploads" Member="projects">
-    <Type Name="project">
-      <Column Name="upload_id" Member="project_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="user_id" Type="System.Int64" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="project_user" Member="users" ThisKey="user_id" OtherKey="user_id" Type="user" />
-      <Association Name="uploadversion_project" Member="uploadversion" ThisKey="project_id" OtherKey="project_id" Type="uploadversion" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.users" Member="users">
     <Type Name="user">
       <Column Name="user_id" Type="System.Int64" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -66,6 +57,15 @@
       <Column Name="rank_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="user_ranking" Member="rankings" ThisKey="rank_id" OtherKey="rank_id" Type="ranking" />
       <Association Name="project_user" Member="project" ThisKey="user_id" OtherKey="user_id" Type="project" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.uploads" Member="projects">
+    <Type Name="project">
+      <Column Name="upload_id" Member="project_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="project_user" Member="users" ThisKey="user_id" OtherKey="user_id" Type="user" />
+      <Association Name="uploadversion_project" Member="uploadversion" ThisKey="project_id" OtherKey="project_id" Type="uploadversion" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

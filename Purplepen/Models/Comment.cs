@@ -57,6 +57,7 @@ namespace Purplepen.Models
                           join u in dc.users on c.user_id equals u.fb_id
                           where c.upload_id == ID
                           where c.title == "general"
+                          orderby c.comment_id ascending
                           select new commentName
                           {
                               naam = u.name,

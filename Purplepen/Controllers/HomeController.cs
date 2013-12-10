@@ -34,7 +34,6 @@ namespace Purplepen.Controllers
             Comment comm = new Comment();
             comment c = new comment();
             dot d = new dot();
-            vote v = new vote();
 
             if (button != "Send")
             {
@@ -98,6 +97,34 @@ namespace Purplepen.Controllers
         }
 
         public ActionResult Index()
+        {
+            Current cur = new Current();
+            ViewBag.current = cur.getCurrentDesign();
+
+            Comment comm = new Comment();
+            int ID = cur.getCurrentID();
+            ViewBag.allcomments = comm.allComments(ID);
+            ViewBag.allcommentsGeneral = comm.allCommentsGeneral(ID);
+            ViewBag.alldots = comm.allDots(ID);
+            return View();
+
+        }
+
+        public ActionResult CommentView()
+        {
+            Current cur = new Current();
+            ViewBag.current = cur.getCurrentDesign();
+
+            Comment comm = new Comment();
+            int ID = cur.getCurrentID();
+            ViewBag.allcomments = comm.allComments(ID);
+            ViewBag.allcommentsGeneral = comm.allCommentsGeneral(ID);
+            ViewBag.alldots = comm.allDots(ID);
+            return View();
+
+        }
+
+        public ActionResult Dots()
         {
             Current cur = new Current();
             ViewBag.current = cur.getCurrentDesign();

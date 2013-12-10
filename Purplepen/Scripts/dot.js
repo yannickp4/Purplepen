@@ -4,8 +4,6 @@ var added = 0;
 var i = 0;
 var array = new Array();
 
-window.onload = init();
-
 function init() {
    
     stage = new createjs.Stage("placeDots");

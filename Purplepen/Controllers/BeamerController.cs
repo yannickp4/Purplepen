@@ -19,7 +19,7 @@ namespace Purplepen.Controllers
 
             Comment comm = new Comment();
             int ID = cur.getCurrentID();
-            ViewBag.allcomments = comm.allComments(ID);
+            ViewBag.allcomments = comm.lastTenComments(ID);
         
             return View();
         }

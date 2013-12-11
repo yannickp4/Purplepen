@@ -13,11 +13,13 @@
 <h2>@ViewBag.projectname ProjectDetail</h2>
 
 <div id="listDesigns">
-@foreach (var item in ViewBag.projectdetail) { 
+@foreach (var item in ViewBag.projectdetail) {
+    <a class="action" href="@Url.Action("VersionDetail", "ProjectDetail", new { versionid=@item.versionid})">
 <div class="listItem">
 <p>@item.description</p>
 <img src="~/uploads/@item.path" />
 </div>
+        </a>
 }
 
         </div>

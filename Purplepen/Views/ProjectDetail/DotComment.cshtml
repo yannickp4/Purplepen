@@ -1,0 +1,22 @@
+﻿@model Purplepen.comment
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<body>
+    @foreach (var item in @ViewBag.current)
+    {
+        <form id="dotForm" name="dotForm" method="post">
+            <input id="dotX" name="dotX" type="text" required />
+            <input id="dotY" name="dotY" type="text" required />
+            <input id="commentText" name="commentText" type="text" required />
+            <input name="designID" value="@item.versionID" class="hide" id="curID" />
+            <input id="submitDot" name="button" type="submit" class="submitComment" value="Send" />
+        </form>
+    }
+</body>
+</html>
+

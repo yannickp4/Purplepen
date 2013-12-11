@@ -1,0 +1,336 @@
+﻿@{
+    ViewBag.Title = "VersionDetail";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PurplePen</title>
+     <link href="~/Content/css/normalize.css" rel="stylesheet" />
+    <link href="~/Content/css/screen.css" rel="stylesheet" />
+    <script type="text/javascript" src="http://code.createjs.com/easeljs-0.6.0.min.js"></script>
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/dot.js"></script>
+    
+
+</head>
+<body onload="go()">
+    @RenderPage("~/Views/Navigation/Navigation.cshtml")
+    <div id="wrapper">
+        <div id="uploadedDesign">
+
+
+            @foreach (var item in @ViewBag.current)
+            {
+
+                    <form method="delete">
+                        <input class="hide" name="ID" value="@item.versionID" />
+                        <input type="button" class="flatBtn" value="Show dots" onclick="showDots()" />
+                        <input type="button" class="flatBtn" value="Hide dots" onclick="removeDots()" />
+                        
+
+                    </form>
+
+                
+
+
+
+
+               <div id="design" style="position:relative; display: block;">
+                    <img id="imgDesign" src="~/uploads/@item.url" style="position:absolute; display: block;" />
+                    <canvas id="placeDots" width="500" height="500" style="position:absolute; display: block;"></canvas>
+                    <p id="designDescription">@item.description</p>
+
+                    <div id ="DotsPartial"style="position:absolute; display: block;">
+                        @Html.Partial("Dots");
+                    </div>
+
+                    @foreach (var item2 in ViewBag.alldots)
+                    {
+                        <div id="dotDiv@(item2.ID)" class="dotDiv" style="height: 200px; width:400px; display:block; position:absolute; top:@(item2.Y - 15)px; left:@(item2.X - 15)px; background-color: white; border-radius: 5px; visibility: hidden;">
+                            <button onclick="hideDotID(@item2.ID)">x</button>
+                            <h4>@item2.naam</h4>
+                            <p>@item2.description</p>
+                            <p>Score: @item2.score</p>
+
+                            <form class="cGenral" method="post">
+
+                                <button name="button" value="plus,@(item2.ID),@(item2.score)">plus</button>
+                                <button name="button" value="min,@(item2.ID),@(item2.score)">min</button>
+
+                            </form>
+
+                        </div>
+                    }
+
+                </div>
+            }
+
+           
+        </div>
+
+        <div id="comments">
+            <div id="commentTabs">
+
+
+            </div>
+
+
+            <div id="gComment">
+                <a href="javascript:activateTab('page1')">General comments</a>
+
+                <a href="javascript:activateTab('page2')">Specific comments</a>
+
+                <a href="javascript:activateTab('page3')">All comments</a>
+
+                <div id="tabCtrl">
+                    <div id="page1" style="display: block;">
+                        <div id="pageGen">
+                            @Html.Partial("CommentView1")
+                        </div>
+                    </div>
+                    <div id="page2" style="display: none;">
+                        <div id="pageDot">
+                            @Html.Partial("CommentView2")
+                        </div>
+                    </div>
+                    <div id="page3" style="display: none;">
+                        <div id="pageAll">
+                            @Html.Partial("CommentView3")
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cTab" id="generalTab"><a>General</a></div>
+            @foreach (var item in @ViewBag.current)
+            {
+                <form method="post">
+                    <input id="commentText" name="commentText" type="text" required />
+                    <input class="hide" id="designID" name="designID" value="@item.versionID" />
+                    <input class="submitComment" type="submit" value="Send" name="button" />
+                </form>
+            }
+             <div class="cTab" id="specificTabs"><a>Place your dot</a></div>
+            <div id="PartialView">
+                @Html.Partial("DotComment")
+
+            </div>
+           
+        </div>
+    </div>
+    <script type="text/javascript" src="~/Scripts/dot.js"></script>
+
+    <script type="text/javascript">
+        var vis = 0;
+
+        function showDotID(id) {
+
+            var idDiv = "dotDiv" + id;
+            //alert(idDiv);
+            var elems = document.getElementsByClassName('dotDiv');
+            for (var i = 0; i < elems.length; i++) {
+                elems[i].style.visibility = 'hidden';
+            }
+            //if (vis == 0) {
+            document.getElementById(idDiv).style.visibility = "visible";
+            //vis = 1;
+            //}
+            //else {
+            //        document.getElementById(idDiv).style.visibility = "hidden";
+            //        vis = 0;
+            //}
+
+        }
+
+        function hideDotID(id) {
+            var idDiv = "dotDiv" + id;
+            document.getElementById(idDiv).style.visibility = "hidden";
+        }
+
+        function removeDots() {
+
+            var elems = document.getElementsByClassName('dotstyle');
+            for (var i = 0; i < elems.length; i++) {
+                elems[i].style.visibility = 'hidden';
+            }
+        }
+
+        function showDots() {
+            //  alert(stage);
+
+            var elems = document.getElementsByClassName('dotstyle');
+            for (var i = 0; i < elems.length; i++) {
+                elems[i].style.visibility = 'visible';
+            }
+        }
+
+        function hover(ID) {
+            document.getElementById('dot' + ID).style.backgroundColor = "DarkViolet";
+        }
+
+        function hoverOut(ID) {
+            document.getElementById('dot' + ID).style.backgroundColor = "Purple";
+        }
+
+
+        function resize() {
+            /*Canvas resizen*/
+            var canv = document.getElementById("placeDots");
+            var des = document.getElementById("imgDesign");
+            var curr_width = des.width;
+            var curr_height = des.height;
+
+            var verhouding = curr_width / curr_height;
+
+            var h = 0;
+            var w = 0;
+
+            if (curr_height > 700) {
+                h = 700;
+                w = curr_width / curr_height * 700;
+
+                if (curr_width > 700) {
+                    w = 700;
+                    h = curr_height / curr_width * 700;
+                }
+            }
+
+            else if (curr_width > 700) {
+                w = 700;
+                h = curr_height / curr_width * 700;
+
+                if (curr_height > 700) {
+                    h = 700;
+                    w = curr_width / curr_height * 700;
+                }
+            }
+            else if (curr_height <= 700 && curr_width <= 700) {
+                h = curr_height;
+                w = curr_width;
+            }
+
+            canv.width = w;
+            canv.height = h;
+            /*----------------*/
+        }
+
+        function go() {
+            //alert('wuut');
+            //setInterval(onDropDownChange, 5000);
+            setInterval(dotsRefresh, 5000);
+            setInterval(onDropDownChange1, 5000);
+            setInterval(onDropDownChange2, 5000);
+            setInterval(onDropDownChange3, 5000);
+            onDropDownChange1();
+            onDropDownChange2();
+            onDropDownChange3();
+            //onDropDownChange();
+            dotsRefresh();
+            init();
+            resize();
+
+
+            //function onDropDownChange() {
+            //    var url = '/Home/CommentView/';
+            //    $.ajax({
+            //        url: url,
+            //        data: {}, //parameters go here in object literal form
+            //        type: 'GET',
+            //        datatype: 'json',
+            //        success: function (data) {
+
+            //            $('#gComment').load(url);
+            //            //alert('shit went aight');
+
+            //        },
+            //        error: function (request) {  }
+            //    });
+            //}
+
+            function onDropDownChange1() {
+                var url = '/Home/CommentView1/';
+                $.ajax({
+                    url: url,
+                    data: {}, //parameters go here in object literal form
+                    type: 'GET',
+                    datatype: 'json',
+                    success: function (data) {
+
+                        $('#pageGen').load(url);
+                        //alert('shit went aight');
+
+                    },
+                    error: function (request) {  }
+                });
+            }
+
+            function onDropDownChange2() {
+                var url = '/Home/CommentView2/';
+                $.ajax({
+                    url: url,
+                    data: {}, //parameters go here in object literal form
+                    type: 'GET',
+                    datatype: 'json',
+                    success: function (data) {
+
+                        $('#pageDot').load(url);
+                       // alert('shit went aight2');
+
+                    },
+                    error: function (request) { }
+                });
+            }
+
+            function onDropDownChange3() {
+                var url = '/Home/CommentView3/';
+                $.ajax({
+                    url: url,
+                    data: {}, //parameters go here in object literal form
+                    type: 'GET',
+                    datatype: 'json',
+                    success: function (data) {
+
+                        $('#pageAll').load(url);
+                       // alert('shit went aight3');
+
+                    },
+                    error: function (request) { }
+                });
+            }
+
+            function dotsRefresh() {
+                var url = '/Home/Dots/';
+                $.ajax({
+                    url: url,
+                    data: {}, //parameters go here in object literal form
+                    type: 'GET',
+                    datatype: 'json',
+                    success: function (data) {
+
+                        $('#DotsPartial').load(url);
+                        //alert('shit went aight');
+
+                    },
+                    error: function (request) {  }
+                });
+            }
+        }
+
+        function activateTab(pageId) {
+            var tabCtrl = document.getElementById('tabCtrl');
+            var pageToActivate = document.getElementById(pageId);
+            for (var i = 0; i < tabCtrl.childNodes.length; i++) {
+                var node = tabCtrl.childNodes[i];
+                if (node.nodeType == 1) { /* Element */
+                    node.style.display = (node == pageToActivate) ? 'block' : 'none';
+                }
+            }
+        }
+
+    </script>
+
+</body>
+
+
+       
+</html>

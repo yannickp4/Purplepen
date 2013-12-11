@@ -23,11 +23,19 @@ namespace Purplepen.Models
             public int top { get; set; }
         }
 
+                public class image
+        {
+            public String url { get; set; }
+            public String description { get; set; }
+            public int versionID { get; set; }
+        }
+
         public class projectdetail {
             public int project_id{ get; set; }
             public String projectname { get; set; }
             public String description { get; set; }
             public String path { get; set; }
+            public int versionid { get; set; }
         }
 
         public void deleteProject(int project_id) {
@@ -35,6 +43,11 @@ namespace Purplepen.Models
             dc.projects.DeleteOnSubmit(p);
             dc.SubmitChanges();
         }
+
+        public List<image> versiondetail(int versionid){
+        var result=(from p in dc.uploadversions where p.version_id==versionid select new image{url=p.path,versionID=p.version_id,description=p.description}).ToList();
+        return result;
+    }
 
         public void uploadimage(uploadversion image, project project)
         {
@@ -62,7 +75,7 @@ namespace Purplepen.Models
 
         public List<projectdetail> projectDetail(int project_id)
         {
-            var result = (from u in dc.uploadversions join p in dc.projects on u.project_id equals p.project_id where u.project_id == project_id orderby u.datum descending select new projectdetail { project_id=p.project_id,projectname=p.name,description=u.description,path=u.path}).ToList();
+            var result = (from u in dc.uploadversions join p in dc.projects on u.project_id equals p.project_id where u.project_id == project_id orderby u.datum descending select new projectdetail { project_id=p.project_id,projectname=p.name,description=u.description,path=u.path,versionid=u.version_id}).ToList();
             return result;
         }
 

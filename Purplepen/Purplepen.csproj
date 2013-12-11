@@ -226,6 +226,13 @@
     <Content Include="Views\Home\CommentView2.cshtml" />
     <Content Include="Views\Home\CommentView1.cshtml" />
     <Content Include="Views\Home\CommentView3.cshtml" />
+    <Content Include="Views\ProjectDetail\VersionDetail.cshtml" />
+    <Content Include="Views\ProjectDetail\CommentView.cshtml" />
+    <Content Include="Views\ProjectDetail\CommentView1.cshtml" />
+    <Content Include="Views\ProjectDetail\CommentView2.cshtml" />
+    <Content Include="Views\ProjectDetail\CommentView3.cshtml" />
+    <Content Include="Views\ProjectDetail\DotComment.cshtml" />
+    <Content Include="Views\ProjectDetail\Dots.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

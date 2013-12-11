@@ -1,0 +1,22 @@
+﻿@model Purplepen.Models.Comment
+@{
+    ViewBag.Title = "Dots";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+
+    @foreach (var item2 in ViewBag.alldots)
+    {
+        <div id="dot@(item2.ID)" onmouseover="hover(@item2.ID)" onmouseout="hoverOut(@item2.ID)" onclick="showDotID(@item2.ID)" class="dotstyle" style="height: @((item2.score * 2) + 20)px; width: @((item2.score *2) + 20)px; display:block; position:absolute; top:@(item2.Y - 10 - (item2.score))px; left:@(item2.X - 10 - (item2.score))px; background-color: purple; border: 1px solid black; border-radius: @(10 + item2.score)px;">
+        </div>
+
+
+
+    }
+
+
+</body>
+</html>
